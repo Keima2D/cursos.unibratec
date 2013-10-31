@@ -20,8 +20,6 @@
 			<property name="org.hibernate" value="info" />
 			<property name="org.hibernate.SQL.level" value="debug" />
 			<property name="org.hibernate.type.level" value="debug" />
-
 		</properties>
-
 	</persistence-unit>
 </persistence>

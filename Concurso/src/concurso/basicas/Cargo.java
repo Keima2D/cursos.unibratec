@@ -7,13 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity @Table(name="TBCargo")
+@Entity @Table(name="cargo")
 public class Cargo {
 
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="IDCargo")
+	@Column(name="id")
 	private Integer id;
-	@Column(name="Descricao", length=20)
+	@Column(name="descricao", length=20)
 	private String descricao;
 
 	public Integer getId() {
