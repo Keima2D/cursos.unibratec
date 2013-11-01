@@ -6,19 +6,25 @@ import javax.persistence.Embeddable;
 @Embeddable 
 public class Endereco {
 	
-	@Column(name="Logradouro", length=50)
+	@Column(name="logradouro", length=255)
 	private String logradouro;
-	@Column(name="UF", length=2)
+	
+	@Column(name="uf", length=2)
 	private short UF;
-	@Column(name="CEP", length=10)
+	
+	@Column(name="cep", length=10)
 	private String CEP;
-	@Column(name="Bairro", length=20)
+	
+	@Column(name="bairro", length=255)
 	private String bairro;
-	@Column(name="Cidade", length=20)
+	
+	@Column(name="cidade", length=255)
 	private String cidade;
-	@Column(name="Complemento", length=50)
+	
+	@Column(name="complemento", length=255)
 	private String complemento;
-	@Column(name="Numero", length=10)
+	
+	@Column(name="numero", length=10)
 	private String numero;
 
 	public String getLogradouro() {

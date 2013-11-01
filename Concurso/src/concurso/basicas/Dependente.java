@@ -14,25 +14,29 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity @Table(name="TBDependente")
+@Entity @Table(name="dependentes")
 public class Dependente {
 	
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="IDDependente")
+	@Column(name="id")
 	private Integer id;
-	@Column(name="Nome", length=50)
+	
+	@Column(name="nome")
 	private String nome;
+	
 	@Enumerated(EnumType.STRING)
-	@Column(name="Sexo", length=1)
+	@Column(name="sexo", length=1)
 	private Sexo sexo;
+	
 	@Temporal(TemporalType.DATE)
-	@Column(name="DataNascimento", length=10)
+	@Column(name="dataNascimento")
 	private Date dataNascimento;
+	
 	@Embedded
 	private Endereco endereco;
-	@Column(name="CPF", length=14)
-	private String CPF;
-
+	
+	@Column(name="cpf", length=14)
+	private String cpf;
 
 	public Integer getId() {
 		return id;
@@ -75,11 +79,11 @@ public class Dependente {
 	}
 
 	public String getCPF() {
-		return CPF;
+		return cpf;
 	}
 
 	public void setCPF(String cPF) {
-		CPF = cPF;
+		cpf = cPF;
 	}
 
 

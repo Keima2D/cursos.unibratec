@@ -7,13 +7,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity @Table(name="TBSetor")
+@Entity @Table(name="setores")
 public class Setor {
 
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="IDSetor")
+	@Column(name="id")
 	private Integer id;
-	@Column(name="Nome", length=50)
+	
+	@Column(name="nome", length=50)
 	private String nome;
 
 	private Setor() {

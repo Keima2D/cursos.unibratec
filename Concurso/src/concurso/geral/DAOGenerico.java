@@ -17,7 +17,7 @@ public abstract class DAOGenerico<Entidade> implements IDAOGenerico<Entidade>{
 
 	@SuppressWarnings("unchecked")
 	public DAOGenerico(){
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("unitFutebol");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("concurso");
 		entityManager = emf.createEntityManager();
 		
 		ParameterizedType parameterizedType = (ParameterizedType) getClass().getGenericSuperclass();  
@@ -25,10 +25,8 @@ public abstract class DAOGenerico<Entidade> implements IDAOGenerico<Entidade>{
 	}
 	
 	/**
-	 * Executa o merge do objeto que se encontra em memória.
-	 * 
-	 * @param objeto
-	 *            a ser realizado o merge
+	 * Executa o merge do objeto que se encontra em memoria.
+	 * @param objeto a ser realizado o merge
 	 * @return objeto que foi executado o merge
 	 */
 	public final void alterar(Entidade objeto) {
@@ -50,7 +48,6 @@ public abstract class DAOGenerico<Entidade> implements IDAOGenerico<Entidade>{
 
 	/**
 	 * Salva o objeto atual na base de dados.
-	 * 
 	 * @param objeto a ser salvo
 	 */
 	public final void inserir(Entidade objeto) {
@@ -70,9 +67,7 @@ public abstract class DAOGenerico<Entidade> implements IDAOGenerico<Entidade>{
 
 	/**
 	 * Salva o objeto atual na base de dados.
-	 * 
-	 * @param objeto
-	 *            a ser salvo
+	 * @param objeto a ser salvo
 	 */
 	public final void inserirColecao(Collection<Entidade> colecao) {
 		EntityTransaction tx = getEntityManager().getTransaction();
@@ -96,9 +91,7 @@ public abstract class DAOGenerico<Entidade> implements IDAOGenerico<Entidade>{
 
 	/**
 	 * Remove o objeto da base de dados.
-	 * 
-	 * @param objeto
-	 *            a ser removido
+	 * @param objeto a ser removido
 	 */
 	public final void remover(Entidade objeto) {
 		EntityTransaction tx = getEntityManager().getTransaction();
@@ -118,14 +111,10 @@ public abstract class DAOGenerico<Entidade> implements IDAOGenerico<Entidade>{
 			}
 		}
 	}
-
-	
 	
 	/**
-	 * Busca o objeto uma vez passado sua chave como parâmetro.
-	 * 
-	 * @param chave
-	 *            identificador
+	 * Busca o objeto uma vez passado sua chave como parï¿½metro.
+	 * @param chave identificador
 	 * @return Objeto do tipo T
 	 */
 	public final Entidade consultarPorId(Integer chave) {
@@ -150,10 +139,8 @@ public abstract class DAOGenerico<Entidade> implements IDAOGenerico<Entidade>{
 	}
 
 	/**
-	 * Atualiza o objeto que se encontra em memória.
-	 * 
-	 * @param object
-	 *            objeto a ser atualizado
+	 * Atualiza o objeto que se encontra em memoria.
+	 * @param object objeto a ser atualizado
 	 */
 	public final void refresh(Entidade object) {
 		getEntityManager().refresh(object);
@@ -161,9 +148,7 @@ public abstract class DAOGenerico<Entidade> implements IDAOGenerico<Entidade>{
 	
 	/**
 	 * Utilizado para se injetar o Entity manager no DAO.
-	 * 
-	 * @param entityManager
-	 *            entity manager
+	 * @param entityManager entity manager
 	 */
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;

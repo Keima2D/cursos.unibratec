@@ -2,6 +2,7 @@ package concurso.basicas;
 
 import java.util.Collection;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
@@ -12,55 +13,77 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity @Table(name="TBFuncionario")
+@Entity @Table(name="funcionarios")
 public class Funcionario {
 	
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="IDFuncionario")
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id")
 	private Integer id;
-	@Column(name="Nome", length=50)
+	
+	@Column(name="nome", length=50)
 	private String nome;
+	
 	@Enumerated(EnumType.STRING)
-	@Column(name="Sexo", length=1)
+	@Column(name="sexo", length=1)
 	private Sexo sexo;
+	
 	@Embedded
 	private Endereco endereco;
-	@Column(name="CPF", length=14)
-	private String CPF;
-	@Column(name="RG", length=12)
-	private String RG;
+	
+	@Column(name="cpf", length=14)
+	private String cpf;
+	
+	@Column(name="rg", length=12)
+	private String rg;
+	
 	@Temporal(TemporalType.DATE)
-	@Column(name="DataNascimento", length=10)
+	@Column(name="dataNascimento", length=10)
 	private Date dataNascimento;
-	@Column(name="Telefone", length=15)
+	
+	@Column(name="telefone", length=15)
 	private String telefone;
-	@Column(name="Email", length=30)
+	
+	@Column(name="email")
 	private String email;
-	@Column(name="Senha", length=30)
+	
+	@Column(name="senha", length=32)
 	private String senha;
-	@Column(name="NomePai", length=50)
+	
+	@Column(name="nomePai")
 	private String nomePai;
-	@Column(name="NomeMae", length=50)
+	
+	@Column(name="nomeMae")
 	private String nomeMae;
-	@Column(name="Observacao", length=50)
+	
+	@Column(name="observacao")
 	private String observacao;
+	
 	@ManyToOne
-	@JoinColumn(name="IDCargo")
 	private Cargo cargo;
+	
 	@ManyToOne
-	@JoinColumn(name="IDSetor")
+	@JoinColumn(name="setor_id")
 	private Setor setor;
+	
 	@Temporal(TemporalType.DATE)
-	@Column(name="DataAdmissao", length=10)
+	@Column(name="dataAdmissao")
 	private Date dataAdmissao;
-	@Column(name="DataDemissao", length=10)
+	
+	@Column(name="dataDemissao")
 	private Date dataDemissao;
+	
 	@ElementCollection
+	@JoinTable(
+		joinColumns=@JoinColumn(name="funcionario_id"),
+		inverseJoinColumns=@JoinColumn(name="dependente_id")
+	)
 	private Collection <Dependente> dependentes;
 
 	public Integer getId() {
@@ -96,19 +119,19 @@ public class Funcionario {
 	}
 
 	public String getCPF() {
-		return CPF;
+		return cpf;
 	}
 
-	public void setCPF(String cPF) {
-		CPF = cPF;
+	public void setCPF(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public String getRG() {
-		return RG;
+		return rg;
 	}
 
-	public void setRG(String rG) {
-		RG = rG;
+	public void setRG(String rg) {
+		this.rg = rg;
 	}
 
 	public Date getDataNascimento() {
