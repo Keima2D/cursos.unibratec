@@ -49,6 +49,10 @@ public class Controlador {
 	 * Funcionarios
 	 */ 
 	
+	public List<Funcionario> consultarTodosFuncionarios () {
+		return this.funcionarioDAO.consultarTodos();
+	}
+	
 	public void inserir (Funcionario obj) {
 		this.funcionarioDAO.inserir(obj);
 	}
@@ -57,8 +61,12 @@ public class Controlador {
 		this.funcionarioDAO.alterar(obj);
 	}
 	
-	public void remover (Funcionario obj) {
-		this.funcionarioDAO.remover(obj);
+	public void remover (Funcionario obj)  throws NegocioException {
+		try {
+			this.funcionarioDAO.remover(obj);
+		} catch (Exception e) {
+			throw new NegocioException("");
+		}
 	}
 
 }
