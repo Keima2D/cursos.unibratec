@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	>
+	<h:body>	
+		<ui:composition template="../layouts/default.xhtml">
+			<ui:define name="content">
+				<ul class="breadcrumb">
+					<li>
+						<a href="../home.xhtml">Home</a>
+						<span class="divider">/</span>
+					</li>
+					<li class="active">Setores</li>
+				</ul>
+				<h:form>
+					<p:commandLink action="form.xhtml" immediate="true" ajax="false" class="btn"><i class="icon icon-plus"></i>&nbps; Novo</p:commandLink>
+					<br /><br />
+			        <p:dataTable var="setor" value="#{setorBean.setores}">
+		                <p:column  width="50" headerText="Id" class="text-centered">
+		                    <h:outputText value="#{setor.id}" />
+		                </p:column>
+		
+		                <p:column headerText="Nome">
+		                    <h:outputText value="#{setor.nome}" />
+		                </p:column>
+		                <p:column width="120" headerText="Ações">
+							<h:commandLink class="btn btn-small btn-success" action="#{setorBean.editar(setor)}" value="Editar"></h:commandLink>
+							<h:commandLink class="btn btn-small btn-danger" action="#{setorBean.excluir(setor)}" value="Excluir"></h:commandLink>
+		                </p:column>
+			        </p:dataTable>
+		        </h:form>
+			</ui:define>
+		</ui:composition>
+	</h:body>
+</html>

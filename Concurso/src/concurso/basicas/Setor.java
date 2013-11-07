@@ -17,7 +17,7 @@ public class Setor {
 	@Column(name="nome", length=50)
 	private String nome;
 
-	private Setor() {
+	public Setor() {
 	}
 
 	public Integer getId() {

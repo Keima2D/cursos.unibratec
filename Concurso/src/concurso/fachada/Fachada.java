@@ -1,6 +1,8 @@
 package concurso.fachada;
 
 import java.util.List;
+
+import concurso.negocio.NegocioException;
 import concurso.basicas.Setor;
 import concurso.negocio.Controlador;
 
@@ -20,14 +22,21 @@ public class Fachada implements IFachada {
 		return fachada;
 	}
 	
-	@Override
-	public void inserir(Setor entidade) {
-		// TODO Auto-generated method stub
+	public void inserir(Setor obj) {
+		this.controlador.inserir(obj);
 		
 	}
+	
+	public void alterar(Setor obj) {
+		this.controlador.alterar(obj);
+	}
 
-	@Override
+	public void remover(Setor obj) throws NegocioException {
+		this.controlador.remover(obj);
+	}
+
 	public List<Setor> consultarTodosSetores() {
 		return this.controlador.consultarTodosSetores();
 	}
+
 }

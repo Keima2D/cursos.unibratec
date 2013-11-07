@@ -1,9 +1,17 @@
 package concurso.fachada;
 
 import java.util.List;
+import concurso.negocio.NegocioException;
 import concurso.basicas.Setor;
 
 public interface IFachada {
-	public  void inserir(Setor entidade);
-	public List<Setor> consultarTodosSetores();
+
+	void inserir(Setor setor);
+
+	void alterar(Setor setor);
+
+	List<Setor> consultarTodosSetores();
+
+	void remover(Setor obj) throws NegocioException;
+	
 }
