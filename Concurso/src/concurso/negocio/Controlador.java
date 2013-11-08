@@ -2,9 +2,11 @@ package concurso.negocio;
 
 import java.util.List;
 
+import concurso.basicas.Cargo;
 import concurso.basicas.Funcionario;
 import concurso.basicas.Setor;
 import concurso.dados.FuncionarioDAO;
+import concurso.dados.ICargoDAO;
 import concurso.dados.IFuncionarioDAO;
 import concurso.dados.ISetorDAO;
 import concurso.dados.SetorDAO;
@@ -12,6 +14,7 @@ import concurso.dados.SetorDAO;
 public class Controlador {
 	private ISetorDAO setorDAO;
 	private IFuncionarioDAO funcionarioDAO;
+	private ICargoDAO cargoDAO;
 	
 	public Controlador () {
 		this.setorDAO = new SetorDAO();
@@ -60,5 +63,26 @@ public class Controlador {
 	public void remover (Funcionario obj) {
 		this.funcionarioDAO.remover(obj);
 	}
+	
+	/**
+	 * Cargos
+	 */ 
+	
+	public void inserir (Cargo obj) {
+		this.cargoDAO.inserir(obj);
+	}
+
+	public void alterar (Cargo obj) {
+		this.cargoDAO.alterar(obj);
+	}
+	
+	public void remover (Cargo obj) {
+		this.cargoDAO.remover(obj);
+	}
+	public List<Cargo> consultarTodosCargos () {
+		return this.cargoDAO.consultarTodos();
+	}
+	
+
 
 }

@@ -3,6 +3,7 @@ package concurso.fachada;
 import java.util.List;
 
 import concurso.negocio.NegocioException;
+import concurso.basicas.Cargo;
 import concurso.basicas.Setor;
 import concurso.negocio.Controlador;
 
@@ -38,5 +39,24 @@ public class Fachada implements IFachada {
 	public List<Setor> consultarTodosSetores() {
 		return this.controlador.consultarTodosSetores();
 	}
+	
+	/**
+	 * Cargos
+	 */ 
+	public void inserir(Cargo obj){
+		this.controlador.inserir(obj);
+	}
+	
+	public void remover(Cargo obj) throws NegocioException {
+		this.controlador.remover(obj);
+	}
+	
+	public List<Cargo> consultarTodosCargos(){
+		return this.controlador.consultarTodosCargos();
+	}
 
+	public void alterar(Cargo obj) {
+		this.controlador.alterar(obj);
+		
+	}
 }
