@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="../layouts/default.xhtml">
+		<ui:define name="content">
+			<ul class="breadcrumb">
+				<li>
+					<a href="#{request.contextPath}/home.xhtml"><i class="icon icon-home"></i></a>
+					<span class="divider">/</span>
+				</li>
+				<li>
+					<a href="#{request.contextPath}/cargos/index.xhtml">Cargos</a>
+					<span class="divider">/</span>
+				</li>
+				<li class="active">Criar/Alterar</li>
+			</ul>
+			<hr />
+			<h:form>
+				<p:messages></p:messages>
+				<p:message for="descricao"></p:message>
+				<h:inputHidden value="#{cargoBean.cargo.id}"></h:inputHidden>
+				Descricao: 
+				<p:inputText id="descricao" value="#{cargoBean.cargo.descricao}" required="true" requiredMessage="Descrição obrigatório">
+				</p:inputText>
+				<p:commandButton action="#{cargoBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

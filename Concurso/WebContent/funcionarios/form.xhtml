@@ -15,7 +15,7 @@
 					<span class="divider">/</span>
 				</li>
 				<li>
-					<a href="#{request.contextPath}/setores/index.xhtml">Setores</a>
+					<a href="#{request.contextPath}/funcionarios/index.xhtml">Funcionários</a>
 					<span class="divider">/</span>
 				</li>
 				<li class="active">Criar/Alterar</li>
@@ -23,15 +23,15 @@
 			<hr />
 			<h:form>
 				<p:messages></p:messages>
+				<p:message for="nome"></p:message>
 				<h:inputHidden value="#{setorBean.setor.id}"></h:inputHidden>
-				
-				<p:message for="nome">Nome:</p:message>
+				Nome: 
 				<p:inputText id="nome" value="#{setorBean.setor.nome}" required="true" requiredMessage="Nome obrigatório">
 				</p:inputText>
-				
-				<hr />
-				<p:commandButton class="btn btn-success" action="#{setorBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
-				<a class="btn btn-danger" href="#{request.contextPath}/setores/index.xhtml"><i class="icon icon-white icon-remove"></i> Cancelar</a>
+				<p:commandButton action="#{setorBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
+				<f:facet name="footer">
+					<p:commandLink action="index.xhtml" immediate="true" ajax="false">Home</p:commandLink>
+				</f:facet>
 			</h:form>
 		</ui:define>
 	</ui:composition>

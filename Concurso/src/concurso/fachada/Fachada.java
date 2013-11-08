@@ -4,6 +4,7 @@ import java.util.List;
 
 import concurso.negocio.NegocioException;
 import concurso.basicas.Cargo;
+import concurso.basicas.Funcionario;
 import concurso.basicas.Setor;
 import concurso.negocio.Controlador;
 
@@ -22,6 +23,11 @@ public class Fachada implements IFachada {
 		}
 		return fachada;
 	}
+	
+	
+	/**
+	 * Setores
+	 */
 	
 	public void inserir(Setor obj) {
 		this.controlador.inserir(obj);
@@ -55,8 +61,31 @@ public class Fachada implements IFachada {
 		return this.controlador.consultarTodosCargos();
 	}
 
+
 	public void alterar(Cargo obj) {
 		this.controlador.alterar(obj);
 		
 	}
+
+	
+	/**
+	 * Funcionarios
+	 */
+	public void inserir(Funcionario obj) {
+		this.controlador.inserir(obj);
+		
+	}
+	
+	public void alterar(Funcionario obj) {
+		this.controlador.alterar(obj);
+	}
+
+	public void remover(Funcionario obj) throws NegocioException {
+		this.controlador.remover(obj);
+	}
+
+	public List<Funcionario> consultarTodosFuncionarios() {
+		return this.controlador.consultarTodosFuncionarios();
+	}
+	
 }
