@@ -1,10 +1,12 @@
 package concurso.negocio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import concurso.basicas.Cargo;
 import concurso.basicas.Funcionario;
 import concurso.basicas.Setor;
+import concurso.dados.CargoDAO;
 import concurso.dados.FuncionarioDAO;
 import concurso.dados.ICargoDAO;
 import concurso.dados.IFuncionarioDAO;
@@ -17,6 +19,7 @@ public class Controlador {
 	private ICargoDAO cargoDAO;
 	
 	public Controlador () {
+		this.cargoDAO = new CargoDAO();
 		this.setorDAO = new SetorDAO();
 		this.funcionarioDAO = new FuncionarioDAO();
 	}
@@ -65,11 +68,8 @@ public class Controlador {
 	}
 	
 	public void remover (Funcionario obj)  throws NegocioException {
-		try {
-			this.funcionarioDAO.remover(obj);
-		} catch (Exception e) {
-			throw new NegocioException("");
-		}
+		this.funcionarioDAO.remover(obj);
+		throw new NegocioException("");
 	}
 	
 	/**

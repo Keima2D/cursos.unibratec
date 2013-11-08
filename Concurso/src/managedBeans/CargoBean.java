@@ -19,10 +19,6 @@ public class CargoBean {
 	public Cargo getCargo() {
 		return this.cargo;
 	}
-	
-	public void setCargo(Cargo cargo) {
-		this.cargo = cargo;
-	}
 
 	public List<Cargo> getCargos() {
 		return fachada.consultarTodosCargos();

@@ -30,7 +30,7 @@ public interface IFachada {
 
 	void alterar(Funcionario funcionario);
 
-	void remover(Funcionario obj);
+	void remover(Funcionario obj) throws NegocioException;
 	
 	/**
 	 * Cargos

@@ -40,13 +40,8 @@ public class FuncionarioBeans {
 		return "form.xhtml";
 	}
 	
-	public String excluir(Funcionario obj){
-		try {
-			fachada.remover(obj);
-			return "setores/index.xhtml";
-		} catch (NegocioException e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Nao pode remover setor " + obj.getNome(), e.getMessage()));
-			return null;
-		}
+	public String excluir(Funcionario obj) throws NegocioException{
+		fachada.remover(obj);
+		return "setores/index.xhtml";
 	}
 }
