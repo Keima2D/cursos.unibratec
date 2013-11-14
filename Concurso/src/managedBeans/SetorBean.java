@@ -44,7 +44,7 @@ public class SetorBean {
 			fachada.remover(obj);
 			return "setores/index.xhtml";
 		} catch (NegocioException e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Nao pode remover setor " + obj.getNome(), e.getMessage()));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Nao pode remover o setor " + obj.getNome(), e.getMessage()));
 			return null;
 		}
 	}

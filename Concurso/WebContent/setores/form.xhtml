@@ -6,34 +6,31 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:body>
-	<ui:composition template="../layouts/default.xhtml">
-		<ui:define name="content">
-			<ul class="breadcrumb">
-				<li>
-					<a href="#{request.contextPath}/home.xhtml"><i class="icon icon-home"></i></a>
-					<span class="divider">/</span>
-				</li>
-				<li>
-					<a href="#{request.contextPath}/setores/index.xhtml">Setores</a>
-					<span class="divider">/</span>
-				</li>
-				<li class="active">Criar/Alterar</li>
-			</ul>
-			<hr />
-			<h:form>
-				<p:messages></p:messages>
-				<h:inputHidden value="#{setorBean.setor.id}"></h:inputHidden>
-				
-				<p:message for="nome">Nome:</p:message>
-				<p:inputText id="nome" value="#{setorBean.setor.nome}" required="true" requiredMessage="Nome obrigatório">
-				</p:inputText>
-				
+	<h:body>
+		<ui:composition template="../layouts/default.xhtml">
+			<ui:define name="content">
+				<ul class="breadcrumb">
+					<li>
+						<a href="#{request.contextPath}/home.xhtml"><i class="icon icon-home"></i></a>
+						<span class="divider">/</span>
+					</li>
+					<li>
+						<a href="#{request.contextPath}/setores/index.xhtml">Setores</a>
+						<span class="divider">/</span>
+					</li>
+					<li class="active">Criar/Alterar</li>
+				</ul>
 				<hr />
-				<p:commandButton class="btn btn-success" action="#{setorBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
-				<a class="btn btn-danger" href="#{request.contextPath}/setores/index.xhtml"><i class="icon icon-white icon-remove"></i> Cancelar</a>
-			</h:form>
-		</ui:define>
-	</ui:composition>
-</h:body>
+				<h:form>
+					<h:inputHidden value="#{setorBean.setor.id}"></h:inputHidden>
+					<p:message for="nome">Nome:</p:message>
+					<p:inputText id="nome" value="#{setorBean.setor.nome}" required="true" requiredMessage="Nome obrigatório"></p:inputText>
+					
+					<hr />
+					<p:commandButton class="btn btn-success" action="#{setorBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
+					<a class="btn btn-danger" href="#{request.contextPath}/setores/index.xhtml"><i class="icon icon-white icon-remove"></i>Cancelar</a>
+				</h:form>
+			</ui:define>
+		</ui:composition>
+	</h:body>
 </html>

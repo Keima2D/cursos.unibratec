@@ -42,9 +42,9 @@ public class CargoBean {
 	public String excluir(Cargo obj){
 		try {
 			fachada.remover(obj);
-			return "Cargos/index.xhtml";
+			return "cargos/index.xhtml";
 		} catch (NegocioException e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Nao pode remover Cargo " + obj.getDescricao(), e.getMessage()));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Nao pode remover o Cargo " + obj.getDescricao(), e.getMessage()));
 			return null;
 		}
 	}

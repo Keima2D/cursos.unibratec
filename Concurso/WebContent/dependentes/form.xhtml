@@ -15,20 +15,20 @@
 						<span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#{request.contextPath}/funcionarios/index.xhtml">Funcionários</a>
+						<a href="#{request.contextPath}/dependentes/index.xhtml">Dependentes</a>
 						<span class="divider">/</span>
 					</li>
 					<li class="active">Criar/Alterar</li>
 				</ul>
 				<hr />
 				<h:form>
-					<h:inputHidden value="#{funcionarioBean.funcionario.id}"></h:inputHidden>
+					<h:inputHidden value="#{dependenteBean.depedente.id}"></h:inputHidden>
 					<p:message for="nome">Nome:</p:message> 
-					<p:inputText id="nome" value="#{funcionarioBean.funcionario.nome}" required="true" requiredMessage="Nome obrigatório"></p:inputText>
+					<p:inputText id="nome" value="#{dependenteBean.depedente.nome}" required="true" requiredMessage="Descrição obrigatório"></p:inputText>
 					
 					<hr/>
-					<p:commandButton class="btn btn-success" action="#{funcionarioBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
-					<a class="btn btn-danger" href="#{request.contextPath}/fucionarios/index.xhtml"><i class="icon icon-white icon-remove"></i>Cancelar</a>
+					<p:commandButton class="btn btn-success" action="#{dependenteBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
+					<a class="btn btn-danger" href="#{request.contextPath}/dependentes/index.xhtml"><i class="icon icon-white icon-remove"></i>Cancelar</a>
 				</h:form>
 			</ui:define>
 		</ui:composition>

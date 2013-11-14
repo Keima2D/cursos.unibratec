@@ -22,13 +22,13 @@
 			</ul>
 			<hr />
 			<h:form>
-				<p:messages></p:messages>
-				<p:message for="descricao"></p:message>
 				<h:inputHidden value="#{cargoBean.cargo.id}"></h:inputHidden>
-				Descricao: 
-				<p:inputText id="descricao" value="#{cargoBean.cargo.descricao}" required="true" requiredMessage="Descrição obrigatório">
-				</p:inputText>
-				<p:commandButton action="#{cargoBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
+				<p:message for="descricao">Descrição:</p:message> 
+				<p:inputText id="descricao" value="#{cargoBean.cargo.descricao}" required="true" requiredMessage="Descrição obrigatório"></p:inputText>
+				
+				<hr/>
+				<p:commandButton class="btn btn-success" action="#{cargoBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
+				<a class="btn btn-danger" href="#{request.contextPath}/cargos/index.xhtml"><i class="icon icon-white icon-remove"></i>Cancelar</a>
 			</h:form>
 		</ui:define>
 	</ui:composition>

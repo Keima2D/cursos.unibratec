@@ -4,6 +4,7 @@ import java.util.List;
 
 import concurso.negocio.NegocioException;
 import concurso.basicas.Cargo;
+import concurso.basicas.Dependente;
 import concurso.basicas.Funcionario;
 import concurso.basicas.Setor;
 
@@ -12,18 +13,17 @@ public interface IFachada {
 	/**
 	 * Setores
 	 */
+	List<Setor> consultarTodosSetores();
+	
 	void inserir(Setor setor);
 
 	void alterar(Setor setor);
-
-	List<Setor> consultarTodosSetores();
 
 	void remover(Setor obj) throws NegocioException;
 
 	/**
 	 * Funcionarios
 	 */
-	
 	List<Funcionario> consultarTodosFuncionarios();
 
 	void inserir(Funcionario funcionario);
@@ -34,14 +34,23 @@ public interface IFachada {
 	
 	/**
 	 * Cargos
-	 */ 
-	
-	void inserir (Cargo cargo);
-	
-	void alterar (Cargo cargo);
-	
+	 */	
 	List <Cargo> consultarTodosCargos();
 	
-	void remover (Cargo obj) throws NegocioException;
+	void inserir(Cargo cargo);
 	
+	void alterar(Cargo cargo);
+		
+	void remover(Cargo obj) throws NegocioException;
+	
+	/**
+	 * Dependente
+	 */	
+	List <Dependente> consultarTodosDependentes();
+	
+	void inserir(Dependente dependente);
+	
+	void alterar(Dependente dependente);
+	
+	void remover(Dependente obj) throws NegocioException;
 }

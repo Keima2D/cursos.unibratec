@@ -15,22 +15,22 @@
 						<a href="#{request.contextPath}/home.xhtml"><i class="icon icon-home"></i></a>
 						<span class="divider">/</span>
 					</li>
-					<li class="active">Funcionários</li>
+					<li class="active">Dependentes</li>
 				</ul>
 				<h:form>
 					<p:commandLink action="form.xhtml" immediate="true" ajax="false" class="btn"><i class="icon icon-plus"></i>&nbps; Novo</p:commandLink>
 					<br /><br />
-			        <p:dataTable var="funcionario" value="#{funcionarioBean.funcionarios}">
+			        <p:dataTable var="dependente" value="#{dependenteBean.dependentes}">
 		                <p:column  width="50" headerText="Id" class="text-centered">
-		                    <h:outputText value="#{funcionario.id}" />
+		                    <h:outputText value="#{dependente.id}" />
 		                </p:column>
 		
 		                <p:column headerText="Nome">
-		                    <h:outputText value="#{funcionario.nome}" />
+		                    <h:outputText value="#{dependente.nome}" />
 		                </p:column>
 		                <p:column width="120" headerText="Ações">
-							<h:commandLink class="btn btn-small btn-success" action="#{funcionarioBean.editar(funcionario)}" value="Editar"></h:commandLink>
-							<h:commandLink class="btn btn-small btn-danger" action="#{funcionarioBean.excluir(funcionario)}" value="Excluir"></h:commandLink>
+							<h:commandLink class="btn btn-small btn-success" action="#{dependenteBean.editar(dependente)}" value="Editar"></h:commandLink>
+							<h:commandLink class="btn btn-small btn-danger" action="#{dependenteBean.excluir(dependente)}" value="Excluir"></h:commandLink>
 		                </p:column>
 			        </p:dataTable>
 		        </h:form>

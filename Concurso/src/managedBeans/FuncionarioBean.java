@@ -7,13 +7,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import concurso.basicas.Funcionario;
-import concurso.basicas.Setor;
 import concurso.fachada.Fachada;
 import concurso.fachada.IFachada;
 import concurso.negocio.NegocioException;
 
 @ManagedBean
-public class FuncionarioBeans {
+public class FuncionarioBean {
 	private Funcionario funcionario = new Funcionario();
 	private IFachada fachada = Fachada.getInstancia();
 
@@ -41,7 +40,12 @@ public class FuncionarioBeans {
 	}
 	
 	public String excluir(Funcionario obj) throws NegocioException{
+		try{
 		fachada.remover(obj);
-		return "setores/index.xhtml";
+		return "funcionarios/index.xhtml";
+		}catch (NegocioException e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Nao pode remover o Funcionário " + obj.getNome(), e.getMessage()));
+			return null;
+		}
 	}
 }
