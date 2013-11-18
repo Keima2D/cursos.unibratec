@@ -21,6 +21,8 @@ public interface IFachada {
 
 	void remover(Setor obj) throws NegocioException;
 
+	Setor consultarSetorPorId(Integer id);
+	
 	/**
 	 * Funcionarios
 	 */
@@ -43,6 +45,8 @@ public interface IFachada {
 		
 	void remover(Cargo obj) throws NegocioException;
 	
+	Cargo consultarCargoPorId (Integer id);
+	
 	/**
 	 * Dependente
 	 */	
@@ -52,5 +56,4 @@ public interface IFachada {
 	
 	void alterar(Dependente dependente);
 	
-	void remover(Dependente obj) throws NegocioException;
 }

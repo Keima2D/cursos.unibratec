@@ -45,6 +45,10 @@ public class Fachada implements IFachada {
 	public List<Setor> consultarTodosSetores() {
 		return this.controlador.consultarTodosSetores();
 	}
+
+	public Setor consultarSetorPorId(Integer id) {
+		return this.controlador.consultarSetorPorId(id);
+	}
 	
 	/**
 	 * Cargos
@@ -61,12 +65,14 @@ public class Fachada implements IFachada {
 		return this.controlador.consultarTodosCargos();
 	}
 
-
 	public void alterar(Cargo obj) {
-		this.controlador.alterar(obj);
-		
+		this.controlador.alterar(obj);		
 	}
 
+	public Cargo consultarCargoPorId(Integer id) {
+		return this.controlador.consultarCargoPorId(id);
+	}
+	
 	/**
 	 * Funcionarios
 	 */
@@ -106,5 +112,4 @@ public class Fachada implements IFachada {
 	public List<Dependente> consultarTodosDependentes() {
 		return this.controlador.consultarTodosDependentes();
 	}
-	
 }

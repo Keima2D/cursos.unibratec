@@ -10,7 +10,7 @@ public class Endereco {
 	private String logradouro;
 	
 	@Column(name="uf", length=2)
-	private short UF;
+	private String UF;
 	
 	@Column(name="cep", length=10)
 	private String CEP;
@@ -35,11 +35,11 @@ public class Endereco {
 		this.logradouro = logradouro;
 	}
 
-	public short getUF() {
+	public String getUF() {
 		return UF;
 	}
 
-	public void setUF(short uF) {
+	public void setUF(String uF) {
 		UF = uF;
 	}
 

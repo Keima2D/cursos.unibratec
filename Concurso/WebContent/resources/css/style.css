@@ -10,3 +10,8 @@ body div#content {margin-top:40px}
 .btn.btn-success, .btn.btn-danger{color: #FFF!important;}
 .btn + .btn{margin-left:5px}
 .text-centered {text-align:center;}
+
+
+form .row-fluid input[type="text"], 
+form .row-fluid input[type="password"], 
+form .row-fluid select {display:block!important; width: 97%!important}

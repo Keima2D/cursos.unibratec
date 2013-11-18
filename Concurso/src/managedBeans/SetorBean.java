@@ -31,7 +31,7 @@ public class SetorBean {
 		} else {
 			fachada.alterar(setor);
 		}
-		return "index.xhtml";
+		return "index.xhtml?faces-redirect=true";
 	}
 	
 	public String editar(Setor obj){
@@ -42,7 +42,7 @@ public class SetorBean {
 	public String excluir(Setor obj){
 		try {
 			fachada.remover(obj);
-			return "setores/index.xhtml";
+			return "setores/index.xhtml?faces-redirect=true";
 		} catch (NegocioException e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Nao pode remover o setor " + obj.getNome(), e.getMessage()));
 			return null;

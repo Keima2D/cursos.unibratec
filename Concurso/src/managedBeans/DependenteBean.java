@@ -38,13 +38,4 @@ public class DependenteBean {
 		return "form.xhtml";
 	}
 	
-	public String excluir(Dependente obj){
-		try {
-			fachada.remover(obj);
-			return "dependentes/index.xhtml";
-		} catch (NegocioException e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Nao pode remover o Dependente " + obj.getNome(), e.getMessage()));
-			return null;
-		}
-	}
 }

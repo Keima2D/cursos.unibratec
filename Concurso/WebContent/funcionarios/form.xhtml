@@ -6,31 +6,197 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-	<h:body>
-		<ui:composition template="../layouts/default.xhtml">
-			<ui:define name="content">
-				<ul class="breadcrumb">
-					<li>
-						<a href="#{request.contextPath}/home.xhtml"><i class="icon icon-home"></i></a>
-						<span class="divider">/</span>
-					</li>
-					<li>
-						<a href="#{request.contextPath}/funcionarios/index.xhtml">Funcionários</a>
-						<span class="divider">/</span>
-					</li>
-					<li class="active">Criar/Alterar</li>
-				</ul>
-				<hr />
-				<h:form>
-					<h:inputHidden value="#{funcionarioBean.funcionario.id}"></h:inputHidden>
-					<p:message for="nome">Nome:</p:message> 
-					<p:inputText id="nome" value="#{funcionarioBean.funcionario.nome}" required="true" requiredMessage="Nome obrigatório"></p:inputText>
+<h:body>
+	<ui:composition template="../layouts/default.xhtml">
+		<ui:define name="content">
+			<ul class="breadcrumb">
+				<li><a
+					href="#{request.contextPath}/home.xhtml?faces-redirect=true"><i
+						class="icon icon-home"></i></a> <span class="divider">/</span></li>
+				<li><a
+					href="#{request.contextPath}/funcionarios/index.xhtml?faces-redirect=true">Funcionários</a>
+					<span class="divider">/</span></li>
+				<li class="active">Criar/Alterar</li>
+			</ul>
+			<hr />
+			<h:form>
+				<h:inputHidden value="#{funcionarioBean.funcionario.id}"></h:inputHidden>
+				<p:messages></p:messages>
+
+				<legend>Dados pessoais</legend>
+
+				<div class="row-fluid">
+					<div class="span4">
+						<p:inputText id="nome" value="#{funcionarioBean.funcionario.nome}" required="true" requiredMessage="Nome obrigatório">
+							<h:outputLabel for="nome">Nome:</h:outputLabel>
+						</p:inputText>
+					</div>
+
+					<div class="span2">
+						<p:inputText id="dataNascimento" placeholder="__/__/____" value="#{funcionarioBean.funcionario.dataNascimento}" required="true" requiredMessage="E-mail obrigatório">
+							<h:outputLabel for="dataNascimento">Nasc.:</h:outputLabel>
+							<f:convertDateTime pattern="d/MM/yyyy" />
+						</p:inputText>
+					</div>
+
+					<div class="span1">
+						<h:outputLabel for="sexo">Sexo:</h:outputLabel>
+						<h:selectOneMenu id="sexo" placeholder="Sexo"
+							value="#{funcionarioBean.funcionario.sexo}" required="true"
+							requiredMessage="Sexo obrigatório">
+							<f:selectItem itemLabel="M" itemValue="M" />
+							<f:selectItem itemLabel="F" itemValue="F" />
+						</h:selectOneMenu>
+					</div>
+
+					<div class="span2">
+						<p:inputText id="cpf" placeholder="___.___.___-__" 	value="#{funcionarioBean.funcionario.CPF}" required="true" requiredMessage="CPF obrigatório">
+							<h:outputLabel for="cpf">CPF:</h:outputLabel>
+						</p:inputText>
+					</div>
+
+					<div class="span2">
+						<p:inputText id="rg" value="#{funcionarioBean.funcionario.RG}" required="true" requiredMessage="RG obrigatório">
+							<h:outputLabel for="rg">RG:</h:outputLabel>
+						</p:inputText>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<div class="span5">
+						<p:inputText id="nomePai" value="#{funcionarioBean.funcionario.nomePai}">
+							<h:outputLabel for="nomePai">Nome do pai:</h:outputLabel>
+						</p:inputText>
+					</div>
+
+					<div class="span5">
+						<p:inputText id="nomeMae" value="#{funcionarioBean.funcionario.nomeMae}">
+							<h:outputLabel for="nomeMae">Nome da mãe</h:outputLabel>
+						</p:inputText>
+					</div>
+
+				</div>
+
+
+				<div class="row-fluid">
+					<div class="span4">
+						<p:inputText id="email" value="#{funcionarioBean.funcionario.email}" required="true" requiredMessage="E-mail obrigatório">
+							<h:outputLabel for="email">E-mail:</h:outputLabel>
+						</p:inputText>
+					</div>
+
+					<div class="span2">
+						<p:inputText id="telefone" value="#{funcionarioBean.funcionario.telefone}" required="true" requiredMessage="Telefone obrigatório">
+							<h:outputLabel for="telefone">Telefone:</h:outputLabel>
+						</p:inputText>
+					</div>
+				</div>
+
+				<br />
+				<legend>Endereço</legend>
+				
+				<div class="row-fluid">
+					<div class="span5">
+						<p:inputText id="logradouro" value="#{funcionarioBean.funcionario.endereco.logradouro}" required="true" requiredMessage="Logradouro obrigatório">
+							<h:outputLabel for="logradouro">Logradouro:</h:outputLabel>
+						</p:inputText>
+					</div>
+
+					<div class="span1">
+						<p:inputText id="numero" value="#{funcionarioBean.funcionario.endereco.numero}">
+							<h:outputLabel for="numero">No.:</h:outputLabel>
+						</p:inputText>
+					</div>
 					
-					<hr/>
-					<p:commandButton class="btn btn-success" action="#{funcionarioBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
-					<a class="btn btn-danger" href="#{request.contextPath}/funcionarios/index.xhtml"><i class="icon icon-white icon-remove"></i>Cancelar</a>
-				</h:form>
-			</ui:define>
-		</ui:composition>
-	</h:body>
+					<div class="span2">
+						<p:inputText id="cep" value="#{funcionarioBean.funcionario.endereco.CEP}" placeholder="_____-___" required="true" requiredMessage="CEP obrigatório">
+							<h:outputLabel for="cep">CEP:</h:outputLabel>
+						</p:inputText>
+					</div>
+
+					<div class="span3">
+						<p:inputText id="complemento" value="#{funcionarioBean.funcionario.endereco.complemento}">
+							<h:outputLabel for="complemento">Complemento:</h:outputLabel>
+						</p:inputText>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="span3">
+						<p:inputText id="bairro" value="#{funcionarioBean.funcionario.endereco.bairro}" required="true" requiredMessage="Bairro obrigatório">
+							<h:outputLabel for="bairro">Bairro:</h:outputLabel>
+						</p:inputText>
+					</div>
+
+					<div class="span3">
+						<p:inputText id="cidade" value="#{funcionarioBean.funcionario.endereco.cidade}" required="true" requiredMessage="Cidade obrigatória">
+							<h:outputLabel for="cidade">Cidade:</h:outputLabel>
+						</p:inputText>
+					</div>
+
+					<div class="span1">
+						<p:inputText id="uf" value="#{funcionarioBean.funcionario.endereco.UF}" required="true" requiredMessage="UF obrigatório">
+							<h:outputLabel for="uf">UF:</h:outputLabel>
+						</p:inputText>
+					</div>
+				</div>				
+				<br />
+				<legend>Outros</legend>
+				<div class="row-fluid">
+				
+					<div class="span3">
+				        <h:selectOneMenu id="setor" value="#{funcionarioBean.setorSelecionado}" required="true" requiredMessage="Setor obrigatório">  
+				        	<f:selectItem itemLabel="----" itemValue="" />  
+				            <f:selectItems value="#{setorBean.setores}" var="setor" itemLabel="#{setor.nome}" itemValue="#{setor.id}"/>
+				            <h:outputLabel for="setor">Setor:</h:outputLabel>
+				        </h:selectOneMenu>  
+			        </div>
+
+					<div class="span2">
+				        <h:selectOneMenu id="cargo" value="#{funcionarioBean.cargoSelecionado}" required="true" requiredMessage="Cargo obrigatório">  
+				        	<f:selectItem itemLabel="----" itemValue="" />  
+				            <f:selectItems value="#{cargoBean.cargos}" var="cargo" itemLabel="#{cargo.descricao}" itemValue="#{cargo.id}" />
+				            <h:outputLabel for="setor">Cargo:</h:outputLabel>
+				        </h:selectOneMenu>  
+			        </div>
+
+					<div class="span2">
+						<p:inputText id="dataAdmissao" value="#{funcionarioBean.funcionario.dataAdmissao}" placeholder="__/__/____"  required="true" requiredMessage="Data de admissão obrigatória">
+							<h:outputLabel for="dataAdmissao">Data de admissão:</h:outputLabel>
+							<f:convertDateTime pattern="d/MM/yyyy" />
+						</p:inputText>
+					</div>
+
+					<div class="span2">
+						<p:inputText id="dataDemissao" value="#{funcionarioBean.funcionario.dataDemissao}" placeholder="__/__/____">
+							<h:outputLabel for="dataDemissao">Data de demissão:</h:outputLabel>
+							<f:convertDateTime pattern="d/MM/yyyy" />
+						</p:inputText>
+					</div>
+
+					<div class="span2">
+						<h:inputSecret id="senha" value="#{funcionarioBean.novaSenha}" >
+							<h:outputLabel for="senha">Senha de acesso:</h:outputLabel>
+						</h:inputSecret>
+					</div>
+				</div>		
+				
+				<div class="row-fluid">
+					<div class="span12">
+						<h:inputTextarea class="span7" id="observacao" value="#{funcionarioBean.funcionario.observacao}" rows="3">
+							<h:outputLabel for="observacao">Observações:</h:outputLabel>
+						</h:inputTextarea>
+					</div>
+				</div>
+				
+				
+				<hr />
+				<p:commandButton class="btn btn-success"
+					action="#{funcionarioBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
+				<a class="btn btn-danger"
+					href="#{request.contextPath}/funcionarios/index.xhtml?faces-redirect=true"><i
+					class="icon icon-white icon-remove"></i>Cancelar</a>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
 </html>

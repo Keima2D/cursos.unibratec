@@ -53,6 +53,10 @@ public class Controlador {
 			throw new NegocioException("Existem funcionarios cadastrados com este setor");
 		}
 	}	
+
+	public Setor consultarSetorPorId(Integer id) {
+		return setorDAO.consultarPorId(id);
+	}
 	
 	/**
 	 * Funcionarios
@@ -92,7 +96,11 @@ public class Controlador {
 	public void remover(Cargo obj) {
 		this.cargoDAO.remover(obj);
 	}
-		
+
+	public Cargo consultarCargoPorId(Integer id) {
+		return cargoDAO.consultarPorId(id);
+	}
+	
 	/**
 	 * Dependente
 	 */ 
@@ -111,5 +119,7 @@ public class Controlador {
 	public void remover(Dependente obj) {
 		this.dependenteDAO.remover(obj);
 	}
+
+
 	
 }

@@ -24,14 +24,14 @@ public class CargoBean {
 		return fachada.consultarTodosCargos();
 	}
 	
-	public String salvar(){
+	public String salvar () {
 		if (cargo.getId() == null || cargo.getId() == 0){
 			cargo.setId(null);
 			fachada.inserir(cargo);
 		} else {
 			fachada.alterar(cargo);
 		}
-		return "index.xhtml";
+		return "index.xhtml?faces-redirect=true";
 	}
 	
 	public String editar(Cargo obj){
@@ -42,7 +42,7 @@ public class CargoBean {
 	public String excluir(Cargo obj){
 		try {
 			fachada.remover(obj);
-			return "cargos/index.xhtml";
+			return "cargos/index.xhtml?faces-redirect=true";
 		} catch (NegocioException e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Nao pode remover o Cargo " + obj.getDescricao(), e.getMessage()));
 			return null;
