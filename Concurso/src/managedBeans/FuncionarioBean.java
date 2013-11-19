@@ -9,7 +9,6 @@ import javax.faces.context.FacesContext;
 import utils.MD5;
 import concurso.basicas.Endereco;
 import concurso.basicas.Funcionario;
-import concurso.basicas.Setor;
 import concurso.fachada.Fachada;
 import concurso.fachada.IFachada;
 import concurso.negocio.NegocioException;

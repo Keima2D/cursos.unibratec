@@ -1,13 +1,10 @@
 package managedBeans;
 
 import java.util.List;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
 import concurso.basicas.Dependente;
 import concurso.fachada.Fachada;
 import concurso.fachada.IFachada;
-import concurso.negocio.NegocioException;
 
 @ManagedBean
 public class DependenteBean {

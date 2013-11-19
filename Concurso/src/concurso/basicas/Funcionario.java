@@ -61,7 +61,7 @@ public class Funcionario {
 	private String nomePai;
 	
 	@Column(name="nomeMae")
-	private String nomeMae;
+	  private String nomeMae;
 	
 	@Column(name="observacao")
 	private String observacao;
@@ -230,5 +230,7 @@ public class Funcionario {
 	public void setDependentes(Collection<Dependente> dependentes) {
 		this.dependentes = dependentes;
 	}
+	
+	
 	
 }
