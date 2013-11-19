@@ -57,13 +57,13 @@ public class Funcionario {
 	@Column(name="senha", length=32)
 	private String senha;
 	
-	@Column(name="nomePai")
+	@Column(name="nomePai", length=50)
 	private String nomePai;
 	
-	@Column(name="nomeMae")
+	@Column(name="nomeMae", length=50)
 	private String nomeMae;
 	
-	@Column(name="observacao")
+	@Column(name="observacao", length=255)
 	private String observacao;
 	
 	@ManyToOne(fetch=FetchType.EAGER)

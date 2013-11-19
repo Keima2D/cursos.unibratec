@@ -6,6 +6,7 @@ import concurso.negocio.NegocioException;
 import concurso.basicas.Cargo;
 import concurso.basicas.Dependente;
 import concurso.basicas.Funcionario;
+import concurso.basicas.Orgao;
 import concurso.basicas.Setor;
 
 public interface IFachada {
@@ -56,4 +57,16 @@ public interface IFachada {
 	
 	void alterar(Dependente dependente);
 	
+	void remover(Dependente obj) throws NegocioException;
+	
+	/**
+	 * Orgao
+	 */	
+	List <Orgao> consultarTodosOrgaos();
+	
+	void inserir(Orgao orgao);
+	
+	void alterar(Orgao orgao);
+	
+	void remover(Orgao obj) throws NegocioException;
 }

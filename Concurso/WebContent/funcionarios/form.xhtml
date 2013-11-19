@@ -27,8 +27,9 @@
 
 				<div class="row-fluid">
 					<div class="span4">
-						<p:inputText id="nome" value="#{funcionarioBean.funcionario.nome}" required="true" requiredMessage="Nome obrigatório">
+						<p:inputText id="nome" value="#{funcionarioBean.funcionario.nome}" required="true" requiredMessage="Nome obrigatório" validatorMessage="O nome informado não obedece o minimo de 5 caracteres">
 							<h:outputLabel for="nome">Nome:</h:outputLabel>
+							<f:validateLength minimum="5" maximum="50" />							
 						</p:inputText>
 					</div>
 
@@ -50,28 +51,32 @@
 					</div>
 
 					<div class="span2">
-						<p:inputText id="cpf" placeholder="___.___.___-__" 	value="#{funcionarioBean.funcionario.CPF}" required="true" requiredMessage="CPF obrigatório">
+						<p:inputText id="cpf" placeholder="___.___.___-__" 	value="#{funcionarioBean.funcionario.CPF}" required="true" requiredMessage="CPF obrigatório" validatorMessage="O CPF informado não obedece ao padrão definido 999.999.999-99">
 							<h:outputLabel for="cpf">CPF:</h:outputLabel>
+							<f:validateRegex pattern="(^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-{1}[0-9]{2})" />
 						</p:inputText>
 					</div>
 
 					<div class="span2">
-						<p:inputText id="rg" value="#{funcionarioBean.funcionario.RG}" required="true" requiredMessage="RG obrigatório">
+						<p:inputText id="rg" value="#{funcionarioBean.funcionario.RG}" required="true" requiredMessage="RG obrigatório" validatorMessage="O RG informado não obedece ao padrão definido 9.999.999">
 							<h:outputLabel for="rg">RG:</h:outputLabel>
+							<f:validateRegex pattern="(^[0-9]{1}.?[0-9]{3}.?[0-9]{3})" />
 						</p:inputText>
 					</div>
 				</div>
 
 				<div class="row-fluid">
 					<div class="span5">
-						<p:inputText id="nomePai" value="#{funcionarioBean.funcionario.nomePai}">
+						<p:inputText id="nomePai" value="#{funcionarioBean.funcionario.nomePai}" required="true" requiredMessage="Nome do pai obrigatório" validatorMessage="O Nome do pai informado não obedece o minimo de 5 caracteres">
 							<h:outputLabel for="nomePai">Nome do pai:</h:outputLabel>
+							<f:validateLength minimum="5" maximum="50" />
 						</p:inputText>
 					</div>
 
 					<div class="span5">
-						<p:inputText id="nomeMae" value="#{funcionarioBean.funcionario.nomeMae}">
+						<p:inputText id="nomeMae" value="#{funcionarioBean.funcionario.nomeMae}" required="true" requiredMessage="Nome da mãe obrigatório" validatorMessage="O nome da mãe informado não obedece o minimo de 5 caracteres">
 							<h:outputLabel for="nomeMae">Nome da mãe</h:outputLabel>
+							<f:validateLength minimum="5" maximum="50" />
 						</p:inputText>
 					</div>
 
@@ -80,14 +85,16 @@
 
 				<div class="row-fluid">
 					<div class="span4">
-						<p:inputText id="email" value="#{funcionarioBean.funcionario.email}" required="true" requiredMessage="E-mail obrigatório">
+						<p:inputText id="email" value="#{funcionarioBean.funcionario.email}" required="true" requiredMessage="E-mail obrigatório" validatorMessage="O e-mail informado não obedece ao padrão definido">
 							<h:outputLabel for="email">E-mail:</h:outputLabel>
+							<f:validateRegex pattern="(^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$)" />
 						</p:inputText>
 					</div>
 
 					<div class="span2">
-						<p:inputText id="telefone" value="#{funcionarioBean.funcionario.telefone}" required="true" requiredMessage="Telefone obrigatório">
+						<p:inputText id="telefone" value="#{funcionarioBean.funcionario.telefone}" placeholder="( )___-___" required="true" requiredMessage="Telefone obrigatório" validatorMessage="O telefone informado não obedece ao padrão definido (99)9999-9999">
 							<h:outputLabel for="telefone">Telefone:</h:outputLabel>
+							<f:validateRegex pattern="(^\([0-9]{2}\)\s?[0-9]{4}\-?[0-9]{4}$)" />
 						</p:inputText>
 					</div>
 				</div>
@@ -97,20 +104,23 @@
 				
 				<div class="row-fluid">
 					<div class="span5">
-						<p:inputText id="logradouro" value="#{funcionarioBean.funcionario.endereco.logradouro}" required="true" requiredMessage="Logradouro obrigatório">
+						<p:inputText id="logradouro" value="#{funcionarioBean.funcionario.endereco.logradouro}" required="true" requiredMessage="Logradouro obrigatório" validatorMessage="O logradouro informado não obedece o minimo de 5 caracteres">
 							<h:outputLabel for="logradouro">Logradouro:</h:outputLabel>
+							<f:validateLength minimum="5" maximum="255" />
 						</p:inputText>
 					</div>
 
 					<div class="span1">
-						<p:inputText id="numero" value="#{funcionarioBean.funcionario.endereco.numero}">
-							<h:outputLabel for="numero">No.:</h:outputLabel>
+						<p:inputText id="numero" value="#{funcionarioBean.funcionario.endereco.numero}" required="true" requiredMessage="Número obrigatório" validatorMessage="O número informado não obedece o minimo de 1 caracteres">
+							<h:outputLabel for="numero">N°.:</h:outputLabel>
+							<f:validateLength minimum="1" maximum="10" />
 						</p:inputText>
 					</div>
 					
 					<div class="span2">
-						<p:inputText id="cep" value="#{funcionarioBean.funcionario.endereco.CEP}" placeholder="_____-___" required="true" requiredMessage="CEP obrigatório">
+						<p:inputText id="cep" value="#{funcionarioBean.funcionario.endereco.CEP}" placeholder="__.___-___" required="true" requiredMessage="CEP obrigatório" validatorMessage="O CEP informado não obedece ao padrão 99.999-999">
 							<h:outputLabel for="cep">CEP:</h:outputLabel>
+							<f:validateRegex pattern="(^[0-9]{2}.?[0-9]{3}-{1}[0-9]{3})" />
 						</p:inputText>
 					</div>
 
@@ -122,20 +132,23 @@
 				</div>
 				<div class="row-fluid">
 					<div class="span3">
-						<p:inputText id="bairro" value="#{funcionarioBean.funcionario.endereco.bairro}" required="true" requiredMessage="Bairro obrigatório">
+						<p:inputText id="bairro" value="#{funcionarioBean.funcionario.endereco.bairro}" required="true" requiredMessage="Bairro obrigatório" validatorMessage="O bairro informado não obedece o minimo de 5 caracteres">
 							<h:outputLabel for="bairro">Bairro:</h:outputLabel>
+							<f:validateLength minimum="3" maximum="255" />
 						</p:inputText>
 					</div>
 
 					<div class="span3">
-						<p:inputText id="cidade" value="#{funcionarioBean.funcionario.endereco.cidade}" required="true" requiredMessage="Cidade obrigatória">
+						<p:inputText id="cidade" value="#{funcionarioBean.funcionario.endereco.cidade}" required="true" requiredMessage="Cidade obrigatória" validatorMessage="A cidade informada não obedece o minimo de 3 caracteres">
 							<h:outputLabel for="cidade">Cidade:</h:outputLabel>
+							<f:validateLength minimum="3" maximum="255" />
 						</p:inputText>
 					</div>
 
 					<div class="span1">
-						<p:inputText id="uf" value="#{funcionarioBean.funcionario.endereco.UF}" required="true" requiredMessage="UF obrigatório">
+						<p:inputText id="uf" value="#{funcionarioBean.funcionario.endereco.UF}" required="true" requiredMessage="UF obrigatório" validatorMessage="A UF informada não não pode ultrapassar 2 caracteres">
 							<h:outputLabel for="uf">UF:</h:outputLabel>
+							<f:validateLength minimum="2" maximum="2" />
 						</p:inputText>
 					</div>
 				</div>				
@@ -182,8 +195,9 @@
 				
 				<div class="row-fluid">
 					<div class="span12">
-						<h:inputTextarea class="span7" id="observacao" value="#{funcionarioBean.funcionario.observacao}" rows="3">
+						<h:inputTextarea class="span7" id="observacao" value="#{funcionarioBean.funcionario.observacao}" rows="3" validatorMessage="A observação informada não pode ultrapassar 255 caracteres">
 							<h:outputLabel for="observacao">Observações:</h:outputLabel>
+							<f:validateLength maximum="255" />
 						</h:inputTextarea>
 					</div>
 				</div>

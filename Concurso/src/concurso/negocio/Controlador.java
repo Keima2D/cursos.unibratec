@@ -5,6 +5,7 @@ import java.util.List;
 import concurso.basicas.Cargo;
 import concurso.basicas.Dependente;
 import concurso.basicas.Funcionario;
+import concurso.basicas.Orgao;
 import concurso.basicas.Setor;
 import concurso.dados.CargoDAO;
 import concurso.dados.DependenteDAO;
@@ -12,7 +13,9 @@ import concurso.dados.FuncionarioDAO;
 import concurso.dados.ICargoDAO;
 import concurso.dados.IDependenteDAO;
 import concurso.dados.IFuncionarioDAO;
+import concurso.dados.IOrgaoDAO;
 import concurso.dados.ISetorDAO;
+import concurso.dados.OrgaoDAO;
 import concurso.dados.SetorDAO;
 
 public class Controlador {
@@ -20,12 +23,14 @@ public class Controlador {
 	private IFuncionarioDAO funcionarioDAO;
 	private ICargoDAO cargoDAO;
 	private IDependenteDAO dependenteDAO;
+	private IOrgaoDAO orgaoDAO;
 	
 	public Controlador() {
 		this.cargoDAO = new CargoDAO();
 		this.setorDAO = new SetorDAO();
 		this.funcionarioDAO = new FuncionarioDAO();
 		this.dependenteDAO = new DependenteDAO();
+		this.orgaoDAO = new OrgaoDAO();
 	}
 	
 	/**
@@ -119,7 +124,24 @@ public class Controlador {
 	public void remover(Dependente obj) {
 		this.dependenteDAO.remover(obj);
 	}
+	
+	/**
+	 * Orgao
+	 */ 
+	public List<Orgao> consultarTodosOrgaos() {
+		return this.orgaoDAO.consultarTodos();
+	}
+	
+	public void inserir(Orgao obj) {
+		this.orgaoDAO.inserir(obj);
+	}
 
-
+	public void alterar(Orgao obj) {
+		this.orgaoDAO.alterar(obj);
+	}
+	
+	public void remover(Orgao obj) {
+		this.orgaoDAO.remover(obj);
+	}
 	
 }
