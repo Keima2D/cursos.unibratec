@@ -5,7 +5,6 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-
 import utils.MD5;
 import concurso.basicas.Endereco;
 import concurso.basicas.Funcionario;

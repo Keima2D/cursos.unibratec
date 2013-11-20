@@ -9,6 +9,7 @@ import concurso.basicas.Cargo;
 import concurso.basicas.Dependente;
 import concurso.basicas.Disciplina;
 import concurso.basicas.Funcionario;
+import concurso.basicas.Orgao;
 import concurso.basicas.Setor;
 import concurso.negocio.Controlador;
 
@@ -140,6 +141,26 @@ public class Fachada implements IFachada {
 	}
 
 	public Disciplina consultarDisciplinaPorId(Integer id) {
-		return this.controlador.consultarDisciplinaPorId(id);
+	return this.controlador.consultarDisciplinaPorId(id);
+	}
+	
+	/**
+	 * Orgao
+	 */
+	public void inserir(Orgao obj) {
+		this.controlador.inserir(obj);
+		
+	}
+	
+	public void alterar(Orgao obj) {
+		this.controlador.alterar(obj);
+	}
+
+	public void remover(Orgao obj) throws NegocioException {
+		this.controlador.remover(obj);
+	}
+
+	public List<Orgao> consultarTodosOrgaos() {
+		return this.controlador.consultarTodosOrgaos();
 	}
 }

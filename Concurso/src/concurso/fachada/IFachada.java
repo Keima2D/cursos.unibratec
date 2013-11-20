@@ -9,6 +9,7 @@ import concurso.basicas.Cargo;
 import concurso.basicas.Dependente;
 import concurso.basicas.Disciplina;
 import concurso.basicas.Funcionario;
+import concurso.basicas.Orgao;
 import concurso.basicas.Setor;
 
 public interface IFachada {
@@ -74,4 +75,17 @@ public interface IFachada {
 	void remover(Disciplina obj) throws NegocioException;
 	
 	Disciplina consultarDisciplinaPorId (Integer id);
+	
+	void remover(Dependente obj) throws NegocioException;
+	
+	/**
+	 * Orgao
+	 */	
+	List <Orgao> consultarTodosOrgaos();
+	
+	void inserir(Orgao orgao);
+	
+	void alterar(Orgao orgao);
+	
+	void remover(Orgao obj) throws NegocioException;
 }
