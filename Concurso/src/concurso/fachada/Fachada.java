@@ -10,6 +10,7 @@ import concurso.basicas.Dependente;
 import concurso.basicas.Disciplina;
 import concurso.basicas.Funcionario;
 import concurso.basicas.Orgao;
+import concurso.basicas.Prova;
 import concurso.basicas.Setor;
 import concurso.negocio.Controlador;
 
@@ -96,9 +97,7 @@ public class Fachada implements IFachada {
 	public List<Funcionario> consultarTodosFuncionarios() {
 		return this.controlador.consultarTodosFuncionarios();
 	}
-	public Funcionario efetuarLogin(String email, String senha)
-			throws LoginException {
-		System.out.println(senha);
+	public Funcionario efetuarLogin(String email, String senha) throws LoginException {
 		return controlador.efetuarLogin(email, senha);
 	}
 	
@@ -162,5 +161,33 @@ public class Fachada implements IFachada {
 
 	public List<Orgao> consultarTodosOrgaos() {
 		return this.controlador.consultarTodosOrgaos();
+	}
+	
+	public Orgao consultarOrgaoPorId(Integer id) {
+		return this.controlador.consultarOrgaoPorId(id);
+	}
+	
+	/**
+	 * Prova
+	 */
+	public void inserir(Prova obj) {
+		this.controlador.inserir(obj);
+		
+	}
+	
+	public void alterar(Prova obj) {
+		this.controlador.alterar(obj);
+	}
+
+	public void remover(Prova obj) throws NegocioException {
+		this.controlador.remover(obj);
+	}
+
+	public List<Prova> consultarTodasProvas() {
+		return this.controlador.consultarTodasProvas();
+	}
+		
+	public Prova consultarProvaPorId(Integer id) {
+		return this.controlador.consultarProvaPorId(id);
 	}
 }

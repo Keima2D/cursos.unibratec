@@ -38,7 +38,9 @@ public class LoginAutenticadoFilter implements Filter {
 			chain.doFilter(request, response);
 		} else {
 
-			if (sessao == null || sessao.getAttribute("loginBean") == null || 
+			if (
+					sessao == null || 
+					sessao.getAttribute("loginBean") == null || 
 					((LoginBean) sessao.getAttribute("loginBean")).getUsuarioLogado() == null) {
 				
 				RequestDispatcher dis = request

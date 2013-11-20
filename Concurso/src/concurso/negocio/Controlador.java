@@ -9,6 +9,7 @@ import concurso.basicas.Dependente;
 import concurso.basicas.Disciplina;
 import concurso.basicas.Funcionario;
 import concurso.basicas.Orgao;
+import concurso.basicas.Prova;
 import concurso.basicas.Setor;
 import concurso.dados.CargoDAO;
 import concurso.dados.DependenteDAO;
@@ -18,8 +19,10 @@ import concurso.dados.IDependenteDAO;
 import concurso.dados.IFuncionarioDAO;
 import concurso.dados.IDisciplinaDAO;
 import concurso.dados.IOrgaoDAO;
+import concurso.dados.IProvaDAO;
 import concurso.dados.ISetorDAO;
 import concurso.dados.OrgaoDAO;
+import concurso.dados.ProvaDAO;
 import concurso.dados.SetorDAO;
 import concurso.dados.DisciplinaDAO;
 public class Controlador {
@@ -29,6 +32,7 @@ public class Controlador {
 	private IDependenteDAO dependenteDAO;
 	private IDisciplinaDAO disciplinaDAO;
 	private IOrgaoDAO orgaoDAO;
+	private IProvaDAO provaDAO;
 	public Controlador() {
 		this.cargoDAO = new CargoDAO();
 		this.setorDAO = new SetorDAO();
@@ -36,6 +40,7 @@ public class Controlador {
 		this.dependenteDAO = new DependenteDAO();
 		this.disciplinaDAO = new DisciplinaDAO();
 		this.orgaoDAO = new OrgaoDAO();
+		this.provaDAO = new ProvaDAO();
 	}
 	
 	/**
@@ -151,6 +156,9 @@ public class Controlador {
 	public void remover(Orgao obj) {
 		this.orgaoDAO.remover(obj);
 	}
+	public Orgao consultarOrgaoPorId(Integer id) {
+		return orgaoDAO.consultarPorId(id);
+	}
 	
 	/**
 	 * Disciplina
@@ -175,4 +183,26 @@ public class Controlador {
 		return disciplinaDAO.consultarPorId(id);
 	}
 	
+	/**
+	 * Prova
+	 */ 
+	public List<Prova> consultarTodasProvas() {
+		return this.provaDAO.consultarTodos();
+	}
+	
+	public void inserir(Prova obj) {
+		this.provaDAO.inserir(obj);
+	}
+
+	public void alterar(Prova obj) {
+		this.provaDAO.alterar(obj);
+	}
+	
+	public void remover(Prova obj) {
+		this.provaDAO.remover(obj);
+	}
+
+	public Prova consultarProvaPorId(Integer id) {
+		return provaDAO.consultarPorId(id);
+	}
 }

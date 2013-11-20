@@ -22,7 +22,12 @@ public class LoginBean {
 	
 	public String efetuarLogin(){
 		try {
-			usuarioLogado = fachada.efetuarLogin(email, new MD5(senha).getHash());
+			MD5 hash = new MD5(this.senha);
+			usuarioLogado = fachada.efetuarLogin(email, hash.getHash());
+			
+			
+			System.out.println(usuarioLogado.getNome());
+			
 		} catch (LoginException e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Login/Senha inexistente"));
 		}
