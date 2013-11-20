@@ -15,6 +15,7 @@ import concurso.dados.FuncionarioDAO;
 import concurso.dados.ICargoDAO;
 import concurso.dados.IDependenteDAO;
 import concurso.dados.IFuncionarioDAO;
+import concurso.dados.IDisciplinaDAO;
 import concurso.dados.ISetorDAO;
 import concurso.dados.SetorDAO;
 import concurso.dados.DisciplinaDAO;
@@ -23,7 +24,7 @@ public class Controlador {
 	private IFuncionarioDAO funcionarioDAO;
 	private ICargoDAO cargoDAO;
 	private IDependenteDAO dependenteDAO;
-	private DisciplinaDAO disciplinaDAO;
+	private IDisciplinaDAO disciplinaDAO;
 	
 	public Controlador() {
 		this.cargoDAO = new CargoDAO();

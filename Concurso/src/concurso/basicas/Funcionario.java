@@ -16,10 +16,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@NamedQuery(name="efetuarLogin", query="Select u from Funcionario u where u.email = :email and u.senha = :senha")
 @Entity @Table(name="funcionarios")
 public class Funcionario {
 	

@@ -97,6 +97,7 @@ public class Fachada implements IFachada {
 	}
 	public Funcionario efetuarLogin(String email, String senha)
 			throws LoginException {
+		System.out.println(senha);
 		return controlador.efetuarLogin(email, senha);
 	}
 	
