@@ -28,6 +28,10 @@
 		                <p:column headerText="Nome">
 		                    <h:outputText value="#{funcionario.nome}" />
 		                </p:column>
+		                
+		                <p:column headerText="CPF">
+		                    <h:outputText value="#{funcionario.CPF}" />
+		                </p:column>
 		                <p:column width="120" headerText="Ações">
 							<h:commandLink class="btn btn-small btn-success" action="#{funcionarioBean.editar(funcionario)}" value="Editar"></h:commandLink>
 							<h:commandLink class="btn btn-small btn-danger" action="#{funcionarioBean.excluir(funcionario)}" value="Excluir"></h:commandLink>

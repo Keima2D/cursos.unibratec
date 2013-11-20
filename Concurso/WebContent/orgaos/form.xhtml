@@ -26,59 +26,91 @@
 				<h:inputHidden value="#{orgaoBean.orgao.id}"></h:inputHidden>
 				<p:messages></p:messages>
 				
-				<p:inputText id="nome" value="#{orgaoBean.orgao.nome}" required="true" requiredMessage="Nome obrigatório">
-					<h:outputLabel for="nome">Nome:</h:outputLabel> 
-				</p:inputText>
+				<legend>Dados da empresa</legend>
+
+				<div class="row-fluid">
+					<div class="span4">
+						<p:inputText id="nome" value="#{orgaoBean.orgao.nome}" required="true" requiredMessage="Nome obrigatório" validatorMessage="O nome informado não obedece o minimo de 5 caracteres">
+							<h:outputLabel for="nome">Nome:</h:outputLabel> 
+							<f:validateLength minimum="5" maximum="50" />
+						</p:inputText>
+					</div>
 				
-				<br/> 
-				<p:inputText id="cnpj" value="#{orgaoBean.orgao.cnpj}" required="true" requiredMessage="CNPJ obrigatório">
-					<h:outputLabel for="cnpj">CNPJ:</h:outputLabel>
-				</p:inputText>
+					<div class="span2">
+						<p:inputText id="cnpj" placeholder="__.___.___/____-__" value="#{orgaoBean.orgao.cnpj}" required="true" requiredMessage="CNPJ obrigatório" validatorMessage="O CNPJ informado não obedece ao padrão definido 99.999.999/9999-99">
+							<h:outputLabel for="cnpj">CNPJ:</h:outputLabel>
+							<f:validateRegex pattern="(^[0-9]{2}.?[0-9]{3}.?[0-9]{3}/{1}[0-9]{4}-{1}[0-9]{2})" />
+						</p:inputText>
+					</div>
 				
-				<br/> 
-				<p:inputText id="telefone" value="#{orgaoBean.orgao.telefone}" required="true" requiredMessage="Telefone obrigatório">
-					<h:outputLabel for="telefone">Telefone:</h:outputLabel>
-				</p:inputText>
+					<div class="span2">
+						<p:inputText id="telefone" value="#{orgaoBean.orgao.telefone}" placeholder="( )___-___" required="true" requiredMessage="Telefone obrigatório" validatorMessage="O telefone informado não obedece ao padrão definido (99)9999-9999">
+							<h:outputLabel for="telefone">Telefone:</h:outputLabel>
+							<f:validateRegex pattern="(^\([0-9]{2}\)\s?[0-9]{4}\-{1}[0-9]{4}$)" />
+						</p:inputText>
+					</div>
+								
+					<div class="span3">
+						<p:inputText id="email" value="#{orgaoBean.orgao.email}" required="true" requiredMessage="E-mail obrigatório" validatorMessage="O e-mail informado não obedece ao padrão definido">
+							<h:outputLabel for="email">Email:</h:outputLabel>
+							<f:validateRegex pattern="(^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$)" />
+						</p:inputText>
+					</div>
+				</div>
 				
-				<br/>
-				<p:inputText id="email" value="#{orgaoBean.orgao.email}" required="true" requiredMessage="E-mail obrigatório">
-					<h:outputLabel for="email">Email:</h:outputLabel>
-				</p:inputText>
+				<legend>Endereço</legend>
 				
-				<br/> 
-				<p:inputText id="logradouro" value="#{orgaoBean.orgao.endereco.logradouro}" required="true" requiredMessage="Logradouro obrigatório">
-					<h:outputLabel for="logradouro">Logradouro:</h:outputLabel>
-				</p:inputText>
+				<div class="row-fluid">
+					<div class="span5">
+						<p:inputText id="logradouro" value="#{orgaoBean.orgao.endereco.logradouro}" required="true" requiredMessage="Logradouro obrigatório" validatorMessage="O logradouro informado não obedece o minimo de 5 caracteres">
+							<h:outputLabel for="logradouro">Logradouro:</h:outputLabel>
+							<f:validateLength minimum="5" maximum="255" />
+						</p:inputText>
+					</div>
 				
-				<br/>
-				<h:outputLabel for="uf">UF:</h:outputLabel> 
-				<p:inputText id="uf" value="#{orgaoBean.orgao.endereco.UF}" required="true" requiredMessage="UF obrigatório"></p:inputText>
+					<div class="span1">
+						<p:inputText id="uf" value="#{orgaoBean.orgao.endereco.UF}" required="true" requiredMessage="UF obrigatório" validatorMessage="A UF informada não não pode ultrapassar 2 caracteres">
+							<h:outputLabel for="uf">UF:</h:outputLabel>
+							<f:validateLength minimum="2" maximum="2" />
+						</p:inputText>
+					</div>
 				
-				<br/> 
-				<p:inputText id="cep" value="#{orgaoBean.orgao.endereco.CEP}" required="true" requiredMessage="Cep obrigatório">
-					<h:outputLabel for="cep">CEP:</h:outputLabel>
-				</p:inputText>
+				 	<div class="span2">
+						<p:inputText id="cep" value="#{orgaoBean.orgao.endereco.CEP}" placeholder="__.___-___" required="true" requiredMessage="Cep obrigatório" validatorMessage="O CEP informado não obedece ao padrão 99.999-999">
+							<h:outputLabel for="cep">CEP:</h:outputLabel>
+							<f:validateRegex pattern="(^[0-9]{2}.?[0-9]{3}-{1}[0-9]{3})" />
+						</p:inputText>
+					</div>
+					
+					<div class="span3">
+						<p:inputText id="bairro" value="#{orgaoBean.orgao.endereco.bairro}" required="true" requiredMessage="Cep obrigatório" validatorMessage="O bairro informado não obedece o minimo de 3 caracteres">
+							<h:outputLabel for="bairro">Bairro:</h:outputLabel>
+							<f:validateLength minimum="3" maximum="255" />
+						</p:inputText>
+					</div>
+				</div>
 				
-				<br/> 
-				<p:inputText id="bairro" value="#{orgaoBean.orgao.endereco.bairro}" required="true" requiredMessage="Cep obrigatório">
-					<h:outputLabel for="bairro">Bairro:</h:outputLabel>
-				</p:inputText>
+				<div class="row-fluid">
+					<div class="span4">
+						<p:inputText id="cidade" value="#{orgaoBean.orgao.endereco.cidade}" required="true" requiredMessage="Cidade obrigatório" validatorMessage="A cidade informada não obedece o minimo de 3 caracteres">
+							<h:outputLabel for="cidade">Cidade:</h:outputLabel>
+							<f:validateLength minimum="3" maximum="255" />
+						</p:inputText>
+					</div>
 				
-				<br/>
-				<p:inputText id="cidade" value="#{orgaoBean.orgao.endereco.cidade}" required="true" requiredMessage="Cidade obrigatório">
-					<h:outputLabel for="cidade">Cidade:</h:outputLabel>
-				</p:inputText>
+					<div class="span4">
+						<p:inputText id="complemento" value="#{orgaoBean.orgao.endereco.complemento}" >
+							<h:outputLabel for="complemento">Complemento:</h:outputLabel>
+						</p:inputText>
+					</div>
 				
-				<br/>
-				<p:inputText id="complemento" value="#{orgaoBean.orgao.endereco.complemento}" required="true" requiredMessage="Complemento obrigatório">
-					<h:outputLabel for="complemento">Complemento:</h:outputLabel>
-				</p:inputText>
-				
-				<br/>
-				<p:inputText id="numero" value="#{orgaoBean.orgao.endereco.numero}" required="true" requiredMessage="Nome obrigatório">
-					<h:outputLabel for="numero">Número:</h:outputLabel>
-				</p:inputText>
-				
+					<div class="span2">
+						<p:inputText id="numero" value="#{orgaoBean.orgao.endereco.numero}" required="true" requiredMessage="Número obrigatório" validatorMessage="O número informado não obedece o minimo de 1 caracteres">
+							<h:outputLabel for="numero">Número:</h:outputLabel>
+							<f:validateLength minimum="1" maximum="10" />
+						</p:inputText>
+					</div>
+				</div>
 				<hr/>
 				<p:commandButton class="btn btn-success" action="#{orgaoBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
 				<a class="btn btn-danger" href="#{request.contextPath}/orgaos/index.xhtml"><i class="icon icon-white icon-remove"></i>Cancelar</a>
