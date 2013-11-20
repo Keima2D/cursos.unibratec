@@ -2,8 +2,6 @@ package concurso.geral;
 
 import java.util.List;
 
-import concurso.negocio.NegocioException;
-
 public interface IDAOGenerico<Entidade> {
 
 	public void inserir(Entidade entidade);

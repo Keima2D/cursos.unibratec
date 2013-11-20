@@ -16,10 +16,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@NamedQuery(name="efetuarLogin", query="Select u from Funcionario u where u.email = :email and u.senha = :senha")
 @Entity @Table(name="funcionarios")
 public class Funcionario {
 	
@@ -57,13 +59,13 @@ public class Funcionario {
 	@Column(name="senha", length=32)
 	private String senha;
 	
-	@Column(name="nomePai")
+	@Column(name="nomePai", length=50)
 	private String nomePai;
 	
-	@Column(name="nomeMae")
+	@Column(name="nomeMae", length=50)
 	private String nomeMae;
 	
-	@Column(name="observacao")
+	@Column(name="observacao", length=255)
 	private String observacao;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
@@ -230,5 +232,7 @@ public class Funcionario {
 	public void setDependentes(Collection<Dependente> dependentes) {
 		this.dependentes = dependentes;
 	}
+	
+	
 	
 }

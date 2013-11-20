@@ -2,10 +2,14 @@ package concurso.fachada;
 
 import java.util.List;
 
+import javax.security.auth.login.LoginException;
+
 import concurso.negocio.NegocioException;
 import concurso.basicas.Cargo;
 import concurso.basicas.Dependente;
+import concurso.basicas.Disciplina;
 import concurso.basicas.Funcionario;
+import concurso.basicas.Orgao;
 import concurso.basicas.Setor;
 import concurso.negocio.Controlador;
 
@@ -92,6 +96,11 @@ public class Fachada implements IFachada {
 	public List<Funcionario> consultarTodosFuncionarios() {
 		return this.controlador.consultarTodosFuncionarios();
 	}
+	public Funcionario efetuarLogin(String email, String senha)
+			throws LoginException {
+		System.out.println(senha);
+		return controlador.efetuarLogin(email, senha);
+	}
 	
 	/**
 	 * Dependente
@@ -111,5 +120,47 @@ public class Fachada implements IFachada {
 
 	public List<Dependente> consultarTodosDependentes() {
 		return this.controlador.consultarTodosDependentes();
+	}
+	/**
+	 * Disciplina
+	 */ 
+	public void inserir(Disciplina obj){
+		this.controlador.inserir(obj);
+	}
+	
+	public void remover(Disciplina obj) throws NegocioException {
+		this.controlador.remover(obj);
+	}
+	
+	public List<Disciplina> consultarTodasDisciplinas(){
+		return this.controlador.consultarTodasDisciplinas();
+	}
+
+	public void alterar(Disciplina obj) {
+		this.controlador.alterar(obj);		
+	}
+
+	public Disciplina consultarDisciplinaPorId(Integer id) {
+	return this.controlador.consultarDisciplinaPorId(id);
+	}
+	
+	/**
+	 * Orgao
+	 */
+	public void inserir(Orgao obj) {
+		this.controlador.inserir(obj);
+		
+	}
+	
+	public void alterar(Orgao obj) {
+		this.controlador.alterar(obj);
+	}
+
+	public void remover(Orgao obj) throws NegocioException {
+		this.controlador.remover(obj);
+	}
+
+	public List<Orgao> consultarTodosOrgaos() {
+		return this.controlador.consultarTodosOrgaos();
 	}
 }

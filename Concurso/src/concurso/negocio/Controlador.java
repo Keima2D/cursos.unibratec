@@ -2,9 +2,13 @@ package concurso.negocio;
 
 import java.util.List;
 
+import javax.security.auth.login.LoginException;
+
 import concurso.basicas.Cargo;
 import concurso.basicas.Dependente;
+import concurso.basicas.Disciplina;
 import concurso.basicas.Funcionario;
+import concurso.basicas.Orgao;
 import concurso.basicas.Setor;
 import concurso.dados.CargoDAO;
 import concurso.dados.DependenteDAO;
@@ -12,20 +16,26 @@ import concurso.dados.FuncionarioDAO;
 import concurso.dados.ICargoDAO;
 import concurso.dados.IDependenteDAO;
 import concurso.dados.IFuncionarioDAO;
+import concurso.dados.IDisciplinaDAO;
+import concurso.dados.IOrgaoDAO;
 import concurso.dados.ISetorDAO;
+import concurso.dados.OrgaoDAO;
 import concurso.dados.SetorDAO;
-
+import concurso.dados.DisciplinaDAO;
 public class Controlador {
 	private ISetorDAO setorDAO;
 	private IFuncionarioDAO funcionarioDAO;
 	private ICargoDAO cargoDAO;
 	private IDependenteDAO dependenteDAO;
-	
+	private IDisciplinaDAO disciplinaDAO;
+	private IOrgaoDAO orgaoDAO;
 	public Controlador() {
 		this.cargoDAO = new CargoDAO();
 		this.setorDAO = new SetorDAO();
 		this.funcionarioDAO = new FuncionarioDAO();
 		this.dependenteDAO = new DependenteDAO();
+		this.disciplinaDAO = new DisciplinaDAO();
+		this.orgaoDAO = new OrgaoDAO();
 	}
 	
 	/**
@@ -77,6 +87,10 @@ public class Controlador {
 		this.funcionarioDAO.remover(obj);
 		throw new NegocioException("");
 	}
+	public Funcionario efetuarLogin(String email, String senha)
+			throws LoginException {
+		return funcionarioDAO.efetuarLogin(email, senha);
+	}
 	
 	/**
 	 * Cargos
@@ -119,7 +133,46 @@ public class Controlador {
 	public void remover(Dependente obj) {
 		this.dependenteDAO.remover(obj);
 	}
+	/**
+	 * Orgao
+	 */ 
+	public List<Orgao> consultarTodosOrgaos() {
+		return this.orgaoDAO.consultarTodos();
+	}
+	
+	public void inserir(Orgao obj) {
+		this.orgaoDAO.inserir(obj);
+	}
 
+	public void alterar(Orgao obj) {
+		this.orgaoDAO.alterar(obj);
+	}
+	
+	public void remover(Orgao obj) {
+		this.orgaoDAO.remover(obj);
+	}
+	
+	/**
+	 * Disciplina
+	 */ 
+	public List<Disciplina> consultarTodasDisciplinas() {
+		return this.disciplinaDAO.consultarTodos();
+	}
+	
+	public void inserir(Disciplina obj) {
+		this.disciplinaDAO.inserir(obj);
+	}
 
+	public void alterar(Disciplina obj) {
+		this.disciplinaDAO.alterar(obj);
+	}
+	
+	public void remover(Disciplina obj) {
+		this.disciplinaDAO.remover(obj);
+	}
+
+	public Disciplina consultarDisciplinaPorId(Integer id) {
+		return disciplinaDAO.consultarPorId(id);
+	}
 	
 }

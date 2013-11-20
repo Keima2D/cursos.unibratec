@@ -1,7 +1,10 @@
 package concurso.dados;
 
 import java.util.List;
+
 import javax.persistence.TypedQuery;
+import javax.security.auth.login.LoginException;
+
 import concurso.basicas.Funcionario;
 import concurso.basicas.Setor;
 import concurso.geral.DAOGenerico;
@@ -13,6 +16,18 @@ public class FuncionarioDAO extends DAOGenerico<Funcionario> implements IFuncion
 		TypedQuery<Funcionario> query = getEntityManager().createQuery(jpql, Funcionario.class);
 		query.setParameter("setor", setor);
 		return query.getResultList();
-	}	
+	}
+
+	public Funcionario efetuarLogin(String email, String senha) throws LoginException{
+		try {
+			TypedQuery<Funcionario> query = getEntityManager().createNamedQuery("efetuarLogin", Funcionario.class);
+			query.setParameter("email", email);
+			query.setParameter("senha", senha);
+			return query.getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new LoginException();
+		}
+	}
 	
 }

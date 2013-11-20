@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<h:body>
+	<ui:composition template="../layouts/default.xhtml">
+		<ui:define name="content">
+			<ul class="breadcrumb">
+				<li>
+					<a href="#{request.contextPath}/home.xhtml"><i 
+					class="icon icon-home"></i></a> <span class="divider">/</span>
+				</li>
+				<li>
+					<a href="#{request.contextPath}/orgaos/index.xhtml">Orgãos</a>
+					<span class="divider">/</span>
+				</li>
+				<li class="active">Criar/Alterar</li>
+			</ul>
+			<hr />
+			<h:form>
+				<h:inputHidden value="#{orgaoBean.orgao.id}"></h:inputHidden>
+				<p:messages></p:messages>
+				
+				<p:inputText id="nome" value="#{orgaoBean.orgao.nome}" required="true" requiredMessage="Nome obrigatório">
+					<h:outputLabel for="nome">Nome:</h:outputLabel> 
+				</p:inputText>
+				
+				<br/> 
+				<p:inputText id="cnpj" value="#{orgaoBean.orgao.cnpj}" required="true" requiredMessage="CNPJ obrigatório">
+					<h:outputLabel for="cnpj">CNPJ:</h:outputLabel>
+				</p:inputText>
+				
+				<br/> 
+				<p:inputText id="telefone" value="#{orgaoBean.orgao.telefone}" required="true" requiredMessage="Telefone obrigatório">
+					<h:outputLabel for="telefone">Telefone:</h:outputLabel>
+				</p:inputText>
+				
+				<br/>
+				<p:inputText id="email" value="#{orgaoBean.orgao.email}" required="true" requiredMessage="E-mail obrigatório">
+					<h:outputLabel for="email">Email:</h:outputLabel>
+				</p:inputText>
+				
+				<br/> 
+				<p:inputText id="logradouro" value="#{orgaoBean.orgao.endereco.logradouro}" required="true" requiredMessage="Logradouro obrigatório">
+					<h:outputLabel for="logradouro">Logradouro:</h:outputLabel>
+				</p:inputText>
+				
+				<br/>
+				<h:outputLabel for="uf">UF:</h:outputLabel> 
+				<p:inputText id="uf" value="#{orgaoBean.orgao.endereco.UF}" required="true" requiredMessage="UF obrigatório"></p:inputText>
+				
+				<br/> 
+				<p:inputText id="cep" value="#{orgaoBean.orgao.endereco.CEP}" required="true" requiredMessage="Cep obrigatório">
+					<h:outputLabel for="cep">CEP:</h:outputLabel>
+				</p:inputText>
+				
+				<br/> 
+				<p:inputText id="bairro" value="#{orgaoBean.orgao.endereco.bairro}" required="true" requiredMessage="Cep obrigatório">
+					<h:outputLabel for="bairro">Bairro:</h:outputLabel>
+				</p:inputText>
+				
+				<br/>
+				<p:inputText id="cidade" value="#{orgaoBean.orgao.endereco.cidade}" required="true" requiredMessage="Cidade obrigatório">
+					<h:outputLabel for="cidade">Cidade:</h:outputLabel>
+				</p:inputText>
+				
+				<br/>
+				<p:inputText id="complemento" value="#{orgaoBean.orgao.endereco.complemento}" required="true" requiredMessage="Complemento obrigatório">
+					<h:outputLabel for="complemento">Complemento:</h:outputLabel>
+				</p:inputText>
+				
+				<br/>
+				<p:inputText id="numero" value="#{orgaoBean.orgao.endereco.numero}" required="true" requiredMessage="Nome obrigatório">
+					<h:outputLabel for="numero">Número:</h:outputLabel>
+				</p:inputText>
+				
+				<hr/>
+				<p:commandButton class="btn btn-success" action="#{orgaoBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
+				<a class="btn btn-danger" href="#{request.contextPath}/orgaos/index.xhtml"><i class="icon icon-white icon-remove"></i>Cancelar</a>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="../layouts/default.xhtml">
+		<ui:define name="content">
+			<ul class="breadcrumb">
+				<li>
+					<a href="#{request.contextPath}/home.xhtml"><i class="icon icon-home"></i></a>
+					<span class="divider">/</span>
+				</li>
+				<li>
+					<a href="#{request.contextPath}/disciplinas/index.xhtml">Disciplinas</a>
+					<span class="divider">/</span>
+				</li>
+				<li class="active">Criar/Alterar</li>
+			</ul>
+			<hr />
+			<h:form>
+				<h:inputHidden value="#{disciplinaBean.disciplina.id}"></h:inputHidden>
+				<p:message for="descricao">Descrição:</p:message> 
+				<p:inputText id="descricao" value="#{disciplinaBean.disciplina.descricao}" required="true" requiredMessage="Descrição obrigatória"></p:inputText>
+				
+				<hr/>
+				<p:commandButton class="btn btn-success" action="#{disciplinaBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
+				<a class="btn btn-danger" href="#{request.contextPath}/disciplinas/index.xhtml"><i class="icon icon-white icon-remove"></i>Cancelar</a>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
