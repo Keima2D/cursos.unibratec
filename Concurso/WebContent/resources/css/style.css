@@ -14,4 +14,5 @@ body div#content {margin-top:40px}
 
 form .row-fluid input[type="text"], 
 form .row-fluid input[type="password"], 
+form .row-fluid textarea, 
 form .row-fluid select {display:block!important; width: 97%!important}
