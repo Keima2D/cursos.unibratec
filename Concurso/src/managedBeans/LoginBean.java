@@ -22,7 +22,8 @@ public class LoginBean {
 	
 	public String efetuarLogin(){
 		try {
-			this.usuarioLogado = fachada.efetuarLogin(email, new MD5(senha).getHash());
+			MD5 hash = new MD5(this.senha);
+			usuarioLogado = fachada.efetuarLogin(email, hash.getHash());
 		} catch (LoginException e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Login/Senha inválidos"));
 		}

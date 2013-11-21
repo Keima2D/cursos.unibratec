@@ -39,7 +39,6 @@ public class LoginAutenticadoFilter implements Filter {
 		if(verificaPaginaInicial(request)) {
 			chain.doFilter(request, response);
 		} else {
-
 			if (sessao == null || 
 				sessao.getAttribute("loginBean") == null || 
 				((LoginBean) sessao.getAttribute("loginBean")).getUsuarioLogado() == null) {
