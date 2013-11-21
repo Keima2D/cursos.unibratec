@@ -20,35 +20,35 @@ import managedBeans.LoginBean;
 @WebFilter("*.xhtml")
 public class LoginAutenticadoFilter implements Filter {
 
-	private static final String[] arquivosEscape = { "javax.faces.resource",
-			"login.xhtml"};
+	private static final String[] arquivosEscape = {
+		"javax.faces.resource",
+		"login.xhtml"
+	};
 
 	public void destroy() {
 		// TODO Auto-generated method stub
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
+		FilterChain chain) throws IOException, ServletException {
+		
 
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession sessao = req.getSession();
+		
 		if(verificaPaginaInicial(request)) {
 			chain.doFilter(request, response);
 		} else {
 
-			if (sessao == null || sessao.getAttribute("loginBean") == null || 
-					((LoginBean) sessao.getAttribute("loginBean")).getUsuarioLogado() == null) {
+			if (sessao == null || 
+				sessao.getAttribute("loginBean") == null || 
+				((LoginBean) sessao.getAttribute("loginBean")).getUsuarioLogado() == null) {
 				
-				RequestDispatcher dis = request
-						.getRequestDispatcher("/login.xhtml");
+				RequestDispatcher dis = request.getRequestDispatcher("/login.xhtml?faces-redirect=true");
 				dis.forward(request, response);
 			} else {
-				
 				// pass the request along the filter chain
 				chain.doFilter(request, response);
-
 			}
 		}
 

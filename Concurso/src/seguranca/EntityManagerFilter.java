@@ -25,7 +25,7 @@ import utils.Parametros;
  *      ://fernandofranzini.wordpress.com/2009/09/09/autenticacao-e-autorizacao/
  */
 
-@WebFilter(filterName = "/EntityManagerFilter", urlPatterns = { "*.xhtm" })
+@WebFilter(filterName = "/EntityManagerFilter", urlPatterns = { "*.xhtml" })
 public class EntityManagerFilter implements Filter {
 
 	private static EntityManagerFactory theEntityManagerFactory = null;
@@ -39,7 +39,7 @@ public class EntityManagerFilter implements Filter {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 		try {
-			// Cria um EntityManager para a requisi‹o
+			// Cria um EntityManager para a requisiï¿½ï¿½o
 			em = theEntityManagerFactory.createEntityManager();
 			// Associa a Thread que esta sendo executada
 			EntityManagerThreads.ENTITY_MANAGERS.set(em);
@@ -47,7 +47,7 @@ public class EntityManagerFilter implements Filter {
 			tx = em.getTransaction();
 			tx.begin();
 			
-			System.out.println("Transação.begin: "
+			System.out.println("Transaï¿½ï¿½o.begin: "
 					+ EntityManagerThreads.ENTITY_MANAGERS.hashCode());
 			
 			// Executa a acao

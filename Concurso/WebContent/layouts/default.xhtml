@@ -17,18 +17,26 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="brand" href="#">TX Concursos</a>
+					<a class="brand" href="#{request.contextPath}/index.xhtml?faces-redirect=true">TX Concursos</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
-							<li class="active"><a href="#{request.contextPath}/home.xhtml?faces-redirect=true">Inicio</a></li>
+							<li class="active"><a href="#{request.contextPath}/index.xhtml?faces-redirect=true">Inicio</a></li>
 							<li><a href="#{request.contextPath}/funcionarios/index.xhtml?faces-redirect=true">Funcionários</a></li>
 							<!--<li><a href="#{request.contextPath}/dependentes/index.xhtml?faces-redirect=true">Dependentes</a></li>-->
 							<li><a href="#{request.contextPath}/setores/index.xhtml?faces-redirect=true">Setores</a></li>
 							<li><a href="#{request.contextPath}/cargos/index.xhtml?faces-redirect=true">Cargos</a></li>
 							<li><a href="#{request.contextPath}/questoes/index.xhtml?faces-redirect=true">Questões</a></li>
-							<li><a href="#{request.contextPath}/disciplinas/index.xhtml?faces-redirect=true">Disciplina</a></li>
+							<li><a href="#{request.contextPath}/disciplinas/index.xhtml?faces-redirect=true">Disciplinas</a></li>
 							<li><a href="#{request.contextPath}/orgaos/index.xhtml?faces-redirect=true">Orgãos</a></li>
 						</ul>
+						<h:form class="zero-margin" sytle="width:80px">
+						<ul class="nav pull-right">
+							<li>
+								<h:commandLink action="#{loginBean.efetuarLogoff}" value="Sair" />
+							</li>
+						</ul>
+						</h:form>
+						
 					</div>
 				</div>
 			</div>

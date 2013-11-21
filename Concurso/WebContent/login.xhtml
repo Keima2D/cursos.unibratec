@@ -13,18 +13,21 @@
 				
 				<h:form class="form-signin">
 					<h3 class="form-signin-heading">TX Concursos</h3>
+					
+					<h:messages></h:messages>
+					
 					<div class="alert">
 				    	<button type="button" class="close" data-dismiss="alert">&times;</button>
 				    	Para acessar o sistema você precisa informar suas credênciais.
 				    </div>
-					<p:inputText text="Usuario" id="login" value="#{loginBean.email}" tabindex="1"
-						requiredMessage="Preencha o login" required="true"
-						autocomplete="false"></p:inputText>
-					<p:password id="senha" text="Senha" value="#{loginBean.senha}" tabindex="2"
-						requiredMessage="Preencha a senha" required="true"
-						autocomplete="false"></p:password>
-					<p:commandButton value="Logar" tabindex="3" ajax="false"
-						action="#{loginBean.efetuarLogin2}"></p:commandButton>
+					
+					<p:inputText placeholder="Usuário" id="login" value="#{loginBean.email}" requiredMessage="Preencha o login" required="true" autocomplete="false">
+					</p:inputText>
+					
+					<h:inputSecret placeholder="Senha" id="senha" value="#{loginBean.senha}" requiredMessage="Preencha a senha" required="true" autocomplete="false">
+					</h:inputSecret>
+					
+					<h:commandButton value="Logar" tabindex="3" ajax="false" action="#{loginBean.efetuarLogin}"></h:commandButton>
 				</h:form>
 			</ui:define>
 		</ui:composition>

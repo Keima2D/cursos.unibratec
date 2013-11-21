@@ -22,25 +22,15 @@ public class LoginBean {
 	
 	public String efetuarLogin(){
 		try {
-			usuarioLogado = fachada.efetuarLogin(email, new MD5(senha).getHash());
+			this.usuarioLogado = fachada.efetuarLogin(email, new MD5(senha).getHash());
 		} catch (LoginException e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Login/Senha inexistente"));
-		}
-		return "/index.xhtml?faces-redirect=true";
-	}
-	
-	public String efetuarLogin2() throws LoginException{
-		try {
-			usuarioLogado = fachada.efetuarLogin(email, senha);
-			return "/home.xhtml?faces-redirect=true";	
-		} catch (LoginException e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Login/Senha inexistente"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Login/Senha inválidos"));
 		}
 		return "/index.xhtml?faces-redirect=true";
 	}
 	
 	public String efetuarLogoff(){
-		usuarioLogado = null;
+		this.usuarioLogado = null;
 		return "/index.xhtml?faces-redirect=true";
 	}
 	public String getEmail() {
@@ -56,7 +46,7 @@ public class LoginBean {
 		this.senha = senha;
 	}
 	public Funcionario getUsuarioLogado() {
-		return usuarioLogado;
+		return this.usuarioLogado;
 	}
 	public void setUsuarioLogado(Funcionario usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
