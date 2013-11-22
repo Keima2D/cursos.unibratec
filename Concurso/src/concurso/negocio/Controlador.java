@@ -10,21 +10,24 @@ import concurso.basicas.Disciplina;
 import concurso.basicas.Funcionario;
 import concurso.basicas.Orgao;
 import concurso.basicas.Prova;
+import concurso.basicas.Questao;
 import concurso.basicas.Setor;
 import concurso.dados.CargoDAO;
 import concurso.dados.DependenteDAO;
+import concurso.dados.DisciplinaDAO;
 import concurso.dados.FuncionarioDAO;
 import concurso.dados.ICargoDAO;
 import concurso.dados.IDependenteDAO;
-import concurso.dados.IFuncionarioDAO;
 import concurso.dados.IDisciplinaDAO;
+import concurso.dados.IFuncionarioDAO;
 import concurso.dados.IOrgaoDAO;
 import concurso.dados.IProvaDAO;
+import concurso.dados.IQuestaoDAO;
 import concurso.dados.ISetorDAO;
 import concurso.dados.OrgaoDAO;
 import concurso.dados.ProvaDAO;
+import concurso.dados.QuestaoDAO;
 import concurso.dados.SetorDAO;
-import concurso.dados.DisciplinaDAO;
 public class Controlador {
 	private ISetorDAO setorDAO;
 	private IFuncionarioDAO funcionarioDAO;
@@ -33,6 +36,9 @@ public class Controlador {
 	private IDisciplinaDAO disciplinaDAO;
 	private IOrgaoDAO orgaoDAO;
 	private IProvaDAO provaDAO;
+	private IQuestaoDAO questaoDAO;
+	
+	
 	public Controlador() {
 		this.cargoDAO = new CargoDAO();
 		this.setorDAO = new SetorDAO();
@@ -41,6 +47,7 @@ public class Controlador {
 		this.disciplinaDAO = new DisciplinaDAO();
 		this.orgaoDAO = new OrgaoDAO();
 		this.provaDAO = new ProvaDAO();
+		this.questaoDAO = new QuestaoDAO();
 	}
 	
 	/**
@@ -204,5 +211,28 @@ public class Controlador {
 
 	public Prova consultarProvaPorId(Integer id) {
 		return provaDAO.consultarPorId(id);
+	}
+	
+	/**
+	 * Questoes
+	 */ 
+	public List<Questao> consultarTodasQuestoes() {
+		return this.questaoDAO.consultarTodos();
+	}
+	
+	public void inserir(Questao obj) {
+		this.questaoDAO.inserir(obj);
+	}
+
+	public void alterar(Questao obj) {
+		this.questaoDAO.alterar(obj);
+	}
+	
+	public void remover(Questao obj) {
+		this.questaoDAO.remover(obj);
+	}
+
+	public Questao consultarQuestaoPorId(Integer id) {
+		return questaoDAO.consultarPorId(id);
 	}
 }

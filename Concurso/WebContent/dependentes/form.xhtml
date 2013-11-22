@@ -22,12 +22,12 @@
 				</ul>
 				<hr />
 				<h:form>
-					<h:inputHidden value="#{dependenteBean.depedente.id}"></h:inputHidden>
+					<h:inputHidden value="#{questaoBean.depedente.id}"></h:inputHidden>
 					<p:message for="nome">Nome:</p:message> 
-					<p:inputText id="nome" value="#{dependenteBean.depedente.nome}" required="true" requiredMessage="Descrição obrigatório"></p:inputText>
+					<p:inputText id="nome" value="#{questaoBean.depedente.nome}" required="true" requiredMessage="Descrição obrigatório"></p:inputText>
 					
 					<hr/>
-					<p:commandButton class="btn btn-success" action="#{dependenteBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
+					<p:commandButton class="btn btn-success" action="#{questaoBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
 					<a class="btn btn-danger" href="#{request.contextPath}/dependentes/index.xhtml"><i class="icon icon-white icon-remove"></i>Cancelar</a>
 				</h:form>
 			</ui:define>

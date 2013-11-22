@@ -12,6 +12,7 @@ import concurso.basicas.Funcionario;
 import concurso.basicas.Orgao;
 import concurso.basicas.Prova;
 import concurso.basicas.Setor;
+import concurso.basicas.Questao;
 
 public interface IFachada {
 	
@@ -101,4 +102,16 @@ public interface IFachada {
 	void alterar(Prova prova);
 	
 	void remover(Prova obj) throws NegocioException;
+	
+	/**
+	 * Questoes
+	 */	
+	List <Questao> consultarTodasQuestoes();
+	
+	void inserir(Questao questao);
+	
+	void alterar(Questao questao);
+	
+	void remover(Questao obj) throws NegocioException;
+	
 }

@@ -22,18 +22,20 @@
 				</ul>
 				<hr />
 				<h:form>
+				<h:inputHidden value="#{questaoBean.questao.id}"></h:inputHidden>
+				<p:messages></p:messages>
 				
 					<div class="row-fluid">
 						<div class="span7">
-							<h:inputTextarea id="introducao" value="" rows="3">
-								<h:outputLabel for="observacao">Introdução:</h:outputLabel>
+							<h:inputTextarea id="introducao" value="#{questaoBean.questao.introducao}" rows="3">
+								<h:outputLabel for="introducao">Introdução:</h:outputLabel>
 							</h:inputTextarea>
 						</div>
 					</div>
 				
 					<div class="row-fluid">
 						<div class="span7">
-							<h:inputTextarea id="pergunta" value="" rows="3">
+							<h:inputTextarea id="pergunta"  value="#{questaoBean.questao.pergunta}" rows="3">
 								<h:outputLabel for="observacao">Pergunta:</h:outputLabel>
 							</h:inputTextarea>
 						</div>
@@ -41,7 +43,7 @@
 					
 					<div class="row-fluid">
 						<div class="span7">
-							<p:inputText id="alternativa_1" value="" required="true" requiredMessage="Nome obrigatório">
+							<p:inputText id="alternativa_1" value="#{questaoBean.questao.alternativaA}" required="true" requiredMessage="Nome obrigatório">
 								<h:outputLabel for="alternativa_1">Alternativa A:</h:outputLabel>
 							</p:inputText>
 						</div>
@@ -49,7 +51,7 @@
 
 					<div class="row-fluid">
 						<div class="span7">
-							<p:inputText id="alternativa_2" value="" required="true" requiredMessage="Nome obrigatório">
+							<p:inputText id="alternativa_2" value="#{questaoBean.questao.alternativaB}" required="true" requiredMessage="Nome obrigatório">
 								<h:outputLabel for="alternativa_2">Alternativa B:</h:outputLabel>
 							</p:inputText>
 						</div>
@@ -57,7 +59,7 @@
 					
 					<div class="row-fluid">
 						<div class="span7">
-							<p:inputText id="alternativa_3" value="" required="true" requiredMessage="Nome obrigatório">
+							<p:inputText id="alternativa_3" value="#{questaoBean.questao.alternativaC}" required="true" requiredMessage="Nome obrigatório">
 								<h:outputLabel for="alternativa_3">Alternativa C:</h:outputLabel>
 							</p:inputText>
 						</div>
@@ -65,7 +67,7 @@
 					
 					<div class="row-fluid">
 						<div class="span7">
-							<p:inputText id="alternativa_4" value="" required="true" requiredMessage="Nome obrigatório">
+							<p:inputText id="alternativa_4" value="#{questaoBean.questao.alternativaD}" required="true" requiredMessage="Nome obrigatório">
 								<h:outputLabel for="alternativa_4">Alternativa D:</h:outputLabel>
 							</p:inputText>
 						</div>
@@ -73,14 +75,14 @@
 
 					<div class="row-fluid">
 						<div class="span7">
-							<p:inputText id="alternativa_5" value="" required="true" requiredMessage="Nome obrigatório">
+							<p:inputText id="alternativa_5" value="#{questaoBean.questao.alternativaE}" required="true" requiredMessage="Nome obrigatório">
 								<h:outputLabel for="alternativa_5">Alternativa E:</h:outputLabel>
 							</p:inputText>
 						</div>
 					</div>
 
 					<hr/>
-					<p:commandButton class="btn btn-success" action="#{dependenteBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
+					<p:commandButton class="btn btn-success" action="#{questaoBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
 					<a class="btn btn-danger" href="#{request.contextPath}/dependentes/index.xhtml"><i class="icon icon-white icon-remove"></i>Cancelar</a>
 				</h:form>
 			</ui:define>

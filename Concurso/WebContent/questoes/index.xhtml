@@ -20,17 +20,17 @@
 				<h:form>
 					<p:commandLink action="form.xhtml" immediate="true" ajax="false" class="btn"><i class="icon icon-plus"></i>&nbps; Novo</p:commandLink>
 					<br /><br />
-			        <p:dataTable var="dependente" value="#{dependenteBean.dependentes}">
+			        <p:dataTable var="dependente" value="#{questaoBean.questoes}">
 		                <p:column  width="50" headerText="Id" class="text-centered">
-		                    <h:outputText value="#{dependente.id}" />
+		                    <h:outputText value="#{questao.id}" />
 		                </p:column>
 		
 		                <p:column headerText="Nome">
-		                    <h:outputText value="#{dependente.nome}" />
+		                    <h:outputText value="#{questao.nome}" />
 		                </p:column>
 		                <p:column width="120" headerText="Ações">
-							<h:commandLink class="btn btn-small btn-success" action="#{dependenteBean.editar(dependente)}" value="Editar"></h:commandLink>
-							<h:commandLink class="btn btn-small btn-danger" action="#{dependenteBean.excluir(dependente)}" value="Excluir"></h:commandLink>
+							<h:commandLink class="btn btn-small btn-success" action="#{questaoBean.editar(questao)}" value="Editar"></h:commandLink>
+							<h:commandLink class="btn btn-small btn-danger" action="#{questaoBean.excluir(questao)}" value="Excluir"></h:commandLink>
 		                </p:column>
 			        </p:dataTable>
 		        </h:form>

@@ -20,7 +20,7 @@
 				<h:form>
 					<p:commandLink action="form.xhtml" immediate="true" ajax="false" class="btn"><i class="icon icon-plus"></i>&nbps; Novo</p:commandLink>
 					<br /><br />
-			        <p:dataTable var="dependente" value="#{dependenteBean.dependentes}">
+			        <p:dataTable var="dependente" value="#{questaoBean.dependentes}">
 		                <p:column  width="50" headerText="Id" class="text-centered">
 		                    <h:outputText value="#{dependente.id}" />
 		                </p:column>
@@ -29,8 +29,8 @@
 		                    <h:outputText value="#{dependente.nome}" />
 		                </p:column>
 		                <p:column width="120" headerText="Ações">
-							<h:commandLink class="btn btn-small btn-success" action="#{dependenteBean.editar(dependente)}" value="Editar"></h:commandLink>
-							<h:commandLink class="btn btn-small btn-danger" action="#{dependenteBean.excluir(dependente)}" value="Excluir"></h:commandLink>
+							<h:commandLink class="btn btn-small btn-success" action="#{questaoBean.editar(dependente)}" value="Editar"></h:commandLink>
+							<h:commandLink class="btn btn-small btn-danger" action="#{questaoBean.excluir(dependente)}" value="Excluir"></h:commandLink>
 		                </p:column>
 			        </p:dataTable>
 		        </h:form>

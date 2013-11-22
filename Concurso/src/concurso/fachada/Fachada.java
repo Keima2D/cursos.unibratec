@@ -4,15 +4,16 @@ import java.util.List;
 
 import javax.security.auth.login.LoginException;
 
-import concurso.negocio.NegocioException;
 import concurso.basicas.Cargo;
 import concurso.basicas.Dependente;
 import concurso.basicas.Disciplina;
 import concurso.basicas.Funcionario;
 import concurso.basicas.Orgao;
 import concurso.basicas.Prova;
+import concurso.basicas.Questao;
 import concurso.basicas.Setor;
 import concurso.negocio.Controlador;
+import concurso.negocio.NegocioException;
 
 public class Fachada implements IFachada {
 
@@ -190,4 +191,30 @@ public class Fachada implements IFachada {
 	public Prova consultarProvaPorId(Integer id) {
 		return this.controlador.consultarProvaPorId(id);
 	}
+
+
+	/**
+	 * Questoes
+	 */
+	public void inserir(Questao obj) {
+		this.controlador.inserir(obj);
+		
+	}
+	
+	public void alterar(Questao obj) {
+		this.controlador.alterar(obj);
+	}
+
+	public void remover(Questao obj) throws NegocioException {
+		this.controlador.remover(obj);
+	}
+
+	public List<Questao> consultarTodasQuestoes() {
+		return this.controlador.consultarTodasQuestoes();
+	}
+		
+	public Questao consultarQuestaoPorId(Integer id) {
+		return this.controlador.consultarQuestaoPorId(id);
+	}
+
 }
