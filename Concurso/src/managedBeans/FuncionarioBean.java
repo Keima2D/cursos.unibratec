@@ -4,7 +4,11 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+
+import com.sun.xml.internal.ws.developer.SchemaValidation;
+
 import utils.MD5;
 import concurso.basicas.Endereco;
 import concurso.basicas.Funcionario;
@@ -12,6 +16,7 @@ import concurso.fachada.Fachada;
 import concurso.fachada.IFachada;
 import concurso.negocio.NegocioException;
 
+@SessionScoped
 @ManagedBean
 public class FuncionarioBean {
 	private Funcionario funcionario = new Funcionario();
@@ -19,6 +24,7 @@ public class FuncionarioBean {
 	private Integer setorSelecionado = null;
 	private Integer cargoSelecionado = null;
 	private String novaSenha;
+	private String senhaOriginal;
 	
 	public Funcionario getFuncionario () {
 		if (this.funcionario.getEndereco() == null) {
@@ -67,10 +73,16 @@ public class FuncionarioBean {
 		this.funcionario.setSetor(Fachada.getInstancia().consultarSetorPorId(this.setorSelecionado));
 		this.funcionario.setCargo(Fachada.getInstancia().consultarCargoPorId(this.cargoSelecionado));
 		
-		if (this.novaSenha != null) {
+		if (this.novaSenha != null && this.novaSenha.length() > 0) {
 			MD5 hash = new MD5(this.novaSenha);
 			this.funcionario.setSenha(hash.getHash());
+		} else {
+			if (this.funcionario.getId() != null || this.funcionario.getId() != 0){
+				this.funcionario.setSenha(this.senhaOriginal);
+			}
 		}
+		
+		System.out.println("---- " + this.senhaOriginal);
 		
 		if (funcionario.getId() == null || funcionario.getId() == 0){
 			funcionario.setId(null);
@@ -78,11 +90,15 @@ public class FuncionarioBean {
 		} else {
 			fachada.alterar(funcionario);
 		}
+		
 		return "index.xhtml?faces-redirect=true";
 	}
 	
 	public String editar(Funcionario obj){
 		this.funcionario = obj;
+		this.senhaOriginal = obj.getSenha();
+		
+		System.out.println(this.senhaOriginal);
 		return "form.xhtml";
 	}
 	

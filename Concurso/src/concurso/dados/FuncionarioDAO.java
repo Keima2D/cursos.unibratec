@@ -29,8 +29,6 @@ public class FuncionarioDAO extends DAOGenerico<Funcionario> implements IFuncion
 			
 			return query.getSingleResult();
 		} catch (Exception e) {
-			System.out.println("u:" + email + " p:" + senha);
-			System.out.println(e.getMessage());
 			throw new LoginException();
 		}
 	}
