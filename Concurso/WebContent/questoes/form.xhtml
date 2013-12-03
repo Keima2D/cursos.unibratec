@@ -21,7 +21,7 @@
 					<li class="active">Criar/Alterar</li>
 				</ul>
 				<hr />
-				<h:form>
+				<h:form enctype="multipart/form-data">
 				<h:inputHidden value="#{questaoBean.questao.id}"></h:inputHidden>
 				<p:messages></p:messages>
 				
@@ -38,6 +38,14 @@
 							<h:inputTextarea id="pergunta"  value="#{questaoBean.questao.pergunta}" rows="3">
 								<h:outputLabel for="observacao">Pergunta:</h:outputLabel>
 							</h:inputTextarea>
+						</div>
+					</div>
+					
+					<div class="row-fluid">
+						<div class="span7">
+							<h:inputFile id="file" validator="#{questaoBean.validateFile}" value="#{questaoBean.anexo}">
+								<h:outputLabel for="file">Imagem de anexo:</h:outputLabel>
+							</h:inputFile>
 						</div>
 					</div>
 					

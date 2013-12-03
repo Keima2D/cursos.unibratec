@@ -18,7 +18,7 @@
 					<li class="active">Questões</li>
 				</ul>
 				<h:form>
-					<p:commandLink action="form.xhtml" immediate="true" ajax="false" class="btn"><i class="icon icon-plus"></i>&nbps; Novo</p:commandLink>
+					<p:commandLink action="form.xhtml?faces-redirect=true" immediate="true" ajax="false" class="btn"><i class="icon icon-plus"></i>&nbps; Novo</p:commandLink>
 					<br /><br />
 			        <p:dataTable var="dependente" value="#{questaoBean.questoes}">
 		                <p:column  width="50" headerText="Id" class="text-centered">
@@ -26,7 +26,7 @@
 		                </p:column>
 		
 		                <p:column headerText="Nome">
-		                    <h:outputText value="#{questao.nome}" />
+		                    <h:outputText value="#{questao.introducao}" />
 		                </p:column>
 		                <p:column width="120" headerText="Ações">
 							<h:commandLink class="btn btn-small btn-success" action="#{questaoBean.editar(questao)}" value="Editar"></h:commandLink>

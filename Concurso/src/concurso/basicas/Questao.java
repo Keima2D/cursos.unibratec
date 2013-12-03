@@ -26,23 +26,29 @@ public class Questao {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Funcionario professor;
 	
+	
+	@Column(columnDefinition="TEXT")
 	private String introducao;
 	
+	@Column(columnDefinition="TEXT")
 	private String pergunta;
 	
-	@Column(name="alternativa_a")
+	@Column(name="imagem_anexo")
+	private String imagemAnexo;
+	
+	@Column(name="alternativa_a", columnDefinition="TEXT")
 	private String alternativaA;
 	
-	@Column(name="alternativa_b")
+	@Column(name="alternativa_b", columnDefinition="TEXT")
 	private String alternativaB;
 
-	@Column(name="alternativa_c")
+	@Column(name="alternativa_c", columnDefinition="TEXT")
 	private String alternativaC;
 	
-	@Column(name="alternativa_d")
+	@Column(name="alternativa_d", columnDefinition="TEXT")
 	private String alternativaD;
 	
-	@Column(name="alternativa_e")
+	@Column(name="alternativa_e", columnDefinition="TEXT")
 	private String alternativaE;
 
 	@Enumerated(EnumType.ORDINAL)
@@ -90,6 +96,14 @@ public class Questao {
 
 	public void setPergunta(String pergunta) {
 		this.pergunta = pergunta;
+	}
+
+	public String getImagemAnexo() {
+		return imagemAnexo;
+	}
+
+	public void setImagemAnexo(String imageAnexo) {
+		this.imagemAnexo = imageAnexo;
 	}
 
 	public String getAlternativaA() {
