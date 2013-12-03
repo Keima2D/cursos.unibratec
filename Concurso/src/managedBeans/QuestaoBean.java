@@ -38,6 +38,10 @@ public class QuestaoBean {
 		this.anexo = anx;
 	}
 
+	public boolean hasAnexoImage () {
+		return this.questao.getImagemAnexo() != null;
+	}
+	
 	private Questao questao = new Questao();
 	private IFachada fachada = Fachada.getInstancia();
 

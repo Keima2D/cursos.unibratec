@@ -43,6 +43,7 @@
 					
 					<div class="row-fluid">
 						<div class="span7">
+							<h:graphicImage rendered="#{questaoBean.questao.imagemAnexo != null}" value="#{request.contextPath}/../resources/upload/#{questaoBean.questao.imagemAnexo}" />
 							<h:inputFile id="file" validator="#{questaoBean.validateFile}" value="#{questaoBean.anexo}">
 								<h:outputLabel for="file">Imagem de anexo:</h:outputLabel>
 							</h:inputFile>
