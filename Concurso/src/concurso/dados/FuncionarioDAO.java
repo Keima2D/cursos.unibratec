@@ -23,10 +23,6 @@ public class FuncionarioDAO extends DAOGenerico<Funcionario> implements IFuncion
 			TypedQuery<Funcionario> query = getEntityManager().createNamedQuery("efetuarLogin", Funcionario.class);
 			query.setParameter("email", email);
 			query.setParameter("senha", senha);
-			
-			System.out.println(email);
-			System.out.println(senha);
-			
 			return query.getSingleResult();
 		} catch (Exception e) {
 			throw new LoginException();

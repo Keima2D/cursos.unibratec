@@ -82,8 +82,6 @@ public class FuncionarioBean {
 			}
 		}
 		
-		System.out.println("---- " + this.senhaOriginal);
-		
 		if (funcionario.getId() == null || funcionario.getId() == 0){
 			funcionario.setId(null);
 			fachada.inserir(funcionario);

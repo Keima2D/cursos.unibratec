@@ -36,7 +36,7 @@ public class DisciplinaBean {
 	
 	public String editar(Disciplina obj){
 		this.disciplina = obj;
-		return "form.xhtml";
+		return "form.xhtml?faces-redirect=true";
 	}
 	
 	public String excluir(Disciplina obj){
@@ -44,7 +44,7 @@ public class DisciplinaBean {
 			fachada.remover(obj);
 			return "disciplinas/index.xhtml?faces-redirect=true";
 		} catch (NegocioException e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Nao pode remover a Disciplina " + obj.getDescricao(), e.getMessage()));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(e.getMessage()));
 			return null;
 		}
 	}

@@ -16,9 +16,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 import javax.servlet.http.Part;
 
-import org.primefaces.event.FileUploadEvent;
-
 import utils.MD5;
+import concurso.basicas.Disciplina;
 import concurso.basicas.Questao;
 import concurso.fachada.Fachada;
 import concurso.fachada.IFachada;
@@ -29,7 +28,10 @@ import concurso.negocio.NegocioException;
 public class QuestaoBean {
 
 	private Part anexo;
-
+	private Questao questao = new Questao();
+	private IFachada fachada = Fachada.getInstancia();
+	private Integer disciplinaSelecionada;
+	
 	public Part getAnexo() {
 		return this.anexo;
 	}
@@ -41,9 +43,6 @@ public class QuestaoBean {
 	public boolean hasAnexoImage () {
 		return this.questao.getImagemAnexo() != null;
 	}
-	
-	private Questao questao = new Questao();
-	private IFachada fachada = Fachada.getInstancia();
 
 	public Questao getQuestao() {
 		return this.questao;
@@ -53,13 +52,35 @@ public class QuestaoBean {
 		return fachada.consultarTodasQuestoes();
 	}
 
+	public Integer getDisciplinaSelecionada() {
+		if (this.disciplinaSelecionada == null && this.questao.getDisciplina() != null) {
+			this.disciplinaSelecionada = this.questao.getDisciplina().getId();
+		}
+		
+		return this.disciplinaSelecionada;
+	}
+
+	public void setDisciplinaSelecionada(Integer disciplinaSelecionada) {
+		this.disciplinaSelecionada = disciplinaSelecionada;
+	}
+
 	public String salvar() {
 		if (this.getAnexo() != null) {
 			this.questao.setImagemAnexo(this.processUpload(this.getAnexo()));
 		}
+		
+		this.questao.setDisciplina(Fachada.getInstancia().consultarDisciplinaPorId(this.disciplinaSelecionada));
 
 		if (questao.getId() == null || questao.getId() == 0) {
 			questao.setId(null);
+			
+			LoginBean login = (LoginBean) FacesContext
+				.getCurrentInstance()
+				.getExternalContext()
+				.getSessionMap()
+				.get("loginBean");
+			
+			questao.setProfessor(login.getUsuarioLogado());
 			fachada.inserir(questao);
 		} else {
 			fachada.alterar(questao);
@@ -79,8 +100,7 @@ public class QuestaoBean {
 		} catch (NegocioException e) {
 			FacesContext.getCurrentInstance().addMessage(
 					null,
-					new FacesMessage("Nao pode remover a questao "
-							+ obj.getId(), e.getMessage()));
+					new FacesMessage("Nao pode remover a questao " + obj.getId(), e.getMessage()));
 			return null;
 		}
 	}
@@ -123,6 +143,8 @@ public class QuestaoBean {
 	}
 	
 	public void validateFile(FacesContext ctx, UIComponent comp, Object value) {
+		if (value == null) return;
+		
 		List<FacesMessage> msgs = new ArrayList<FacesMessage>();
 		Part file = (Part) value;
 

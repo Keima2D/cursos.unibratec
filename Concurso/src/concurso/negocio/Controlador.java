@@ -182,8 +182,14 @@ public class Controlador {
 		this.disciplinaDAO.alterar(obj);
 	}
 	
-	public void remover(Disciplina obj) {
-		this.disciplinaDAO.remover(obj);
+	public void remover(Disciplina obj) throws NegocioException {
+		List<Questao> listQ = this.questaoDAO.pesquisarQuestoesPorDisciplina(obj);
+		
+		if (!listQ.isEmpty()) {
+			throw new NegocioException("J‡ existem quest›es cadastradas nessa disciplina");
+		} else {
+			this.disciplinaDAO.remover(obj);
+		}
 	}
 
 	public Disciplina consultarDisciplinaPorId(Integer id) {

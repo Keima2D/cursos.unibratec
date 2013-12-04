@@ -15,9 +15,10 @@
 						<a href="#{request.contextPath}/home.xhtml"><i class="icon icon-home"></i></a>
 						<span class="divider">/</span>
 					</li>
-					<li class="active">Disciplina</li>
+					<li class="active">Disciplinas</li>
 				</ul>
 				<h:form>
+					<h:messages class="alert alert-error"></h:messages>
 					<p:commandLink action="form.xhtml" immediate="true" ajax="false" class="btn"><i class="icon icon-plus"></i>&nbps; Novo</p:commandLink>
 					<br /><br />
 			        <p:dataTable var="disciplina" value="#{disciplinaBean.disciplinas}">

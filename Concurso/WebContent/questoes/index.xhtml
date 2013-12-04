@@ -25,9 +25,14 @@
 		                    <h:outputText value="#{questao.id}" />
 		                </p:column>
 		
-		                <p:column headerText="Nome">
-		                    <h:outputText value="#{questao.introducao}" />
+		                <p:column headerText="Disciplina" style="width:20%">
+		                    <h:outputText value="#{questao.disciplina.descricao}" />
 		                </p:column>
+		 
+		                <p:column headerText="Autor">
+		                    <h:outputText value="#{questao.professor.nome}" />
+		                </p:column>               
+		                
 		                <p:column width="120" headerText="Ações">
 							<h:commandLink class="btn btn-small btn-success" action="#{questaoBean.editar(questao)}" value="Editar"></h:commandLink>
 							<h:commandLink class="btn btn-small btn-danger" action="#{questaoBean.excluir(questao)}" value="Excluir"></h:commandLink>

@@ -16,3 +16,13 @@ form .row-fluid input[type="text"],
 form .row-fluid input[type="password"], 
 form .row-fluid textarea, 
 form .row-fluid select {display:block!important; width: 97%!important}
+form label {font-weight: bold}
+
+
+.uploaded_image img {
+	border: 1px solid #ccc!important;
+	margin:10px 0;
+}
+
+form ul.alert {margin:0;margin-bottom: 10px}
+form ul.alert li {margin:0; padding:0;list-style: none;}
