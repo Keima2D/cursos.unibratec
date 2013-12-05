@@ -103,6 +103,8 @@ public interface IFachada {
 	
 	void remover(Prova obj) throws NegocioException;
 	
+	Prova consultarProvaPorId (Integer id);
+	
 	/**
 	 * Questoes
 	 */	

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+
 import concurso.basicas.Prova;
 import concurso.fachada.Fachada;
 import concurso.fachada.IFachada;
@@ -16,7 +17,10 @@ public class ProvaBean {
 	private IFachada fachada = Fachada.getInstancia();
 	private Integer orgaoSelecionado = null;
 	
-	public List<Prova> getProva () {
+	public Prova getProva() {
+		return this.prova;
+	}
+	public List<Prova> getProvas() {
 		return fachada.consultarTodasProvas();
 	}
 	
@@ -31,6 +35,7 @@ public class ProvaBean {
 	public void setOrgaoSelecionado (Integer orgaoSelecionado) {
 		this.orgaoSelecionado = orgaoSelecionado;
 	}
+	
 	
 	public String salvar () {
 		this.prova.setOrgao(Fachada.getInstancia().consultarOrgaoPorId(this.orgaoSelecionado));
@@ -57,6 +62,7 @@ public class ProvaBean {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Nao pode remover a Prova " + obj.getNome(), e.getMessage()));
 			return null;
 		}
+		
 	}
 }
 

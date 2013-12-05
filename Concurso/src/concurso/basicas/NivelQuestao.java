@@ -1,5 +1,5 @@
 package concurso.basicas;
 
 public enum NivelQuestao {
-	MEDIO, TECNICO, SUPERIOR;
+	MEDIO,TECNICO,SUPERIOR
 }

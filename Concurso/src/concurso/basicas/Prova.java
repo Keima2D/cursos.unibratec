@@ -1,6 +1,5 @@
 package concurso.basicas;
 
-import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,7 +35,7 @@ public class Prova {
 	private String observacao;
 	
 	@Column(name="nivel")
-	private Integer nivel;
+	private String nivel;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_aplicacao")
@@ -45,12 +45,6 @@ public class Prova {
 	@JoinColumn(name="orgao_id")
 	private Orgao orgao;
 	
-	@ElementCollection
-	@JoinTable(
-		joinColumns=@JoinColumn(name="prova_id"),
-		inverseJoinColumns=@JoinColumn(name="disciplina_id")
-	)
-	private Collection <Disciplina> disciplina;
 
 	public Orgao getOrgao() {
 		return orgao;
@@ -92,11 +86,11 @@ public class Prova {
 		this.observacao = observacao;
 	}
 
-	public Integer getNivel() {
+	public String getNivel() {
 		return nivel;
 	}
 
-	public void setNivel(Integer nivel) {
+	public void setNivel(String nivel) {
 		this.nivel = nivel;
 	}
 
@@ -108,11 +102,4 @@ public class Prova {
 		this.data_aplicacao = data_aplicacao;
 	}
 
-	public Collection<Disciplina> getDisciplina() {
-		return disciplina;
-	}
-
-	public void setDisciplina(Collection<Disciplina> disciplina) {
-		this.disciplina = disciplina;
-	}
 }
