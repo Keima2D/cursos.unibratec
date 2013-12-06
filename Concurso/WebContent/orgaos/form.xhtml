@@ -37,17 +37,17 @@
 					</div>
 				
 					<div class="span2">
-						<p:inputText id="cnpj" placeholder="__.___.___/____-__" value="#{orgaoBean.orgao.cnpj}" required="true" requiredMessage="CNPJ obrigatório" validatorMessage="O CNPJ informado não obedece ao padrão definido 99.999.999/9999-99">
+						<p:inputMask id="cnpj" mask="99.999.999/9999-99" value="#{orgaoBean.orgao.cnpj}" placeholder="__.___.___/____-__" required="true" requiredMessage="CNPJ obrigatório" validatorMessage="O CNPJ informado não obedece ao padrão definido 99.999.999/9999-99">
 							<h:outputLabel for="cnpj">CNPJ:</h:outputLabel>
 							<f:validateRegex pattern="(^[0-9]{2}.?[0-9]{3}.?[0-9]{3}/{1}[0-9]{4}-{1}[0-9]{2})" />
-						</p:inputText>
+						</p:inputMask>
 					</div>
 				
 					<div class="span2">
-						<p:inputText id="telefone" value="#{orgaoBean.orgao.telefone}" placeholder="( )___-___" required="true" requiredMessage="Telefone obrigatório" validatorMessage="O telefone informado não obedece ao padrão definido (99)9999-9999">
+						<p:inputMask id="telefone" mask="(99)9999-9999" value="#{orgaoBean.orgao.telefone}" placeholder="(__)___-___" required="true" requiredMessage="Telefone obrigatório" validatorMessage="O telefone informado não obedece ao padrão definido (99)9999-9999">
 							<h:outputLabel for="telefone">Telefone:</h:outputLabel>
 							<f:validateRegex pattern="(^\([0-9]{2}\)\s?[0-9]{4}\-{1}[0-9]{4}$)" />
-						</p:inputText>
+						</p:inputMask>
 					</div>
 								
 					<div class="span3">
@@ -76,10 +76,10 @@
 					</div>
 				
 				 	<div class="span2">
-						<p:inputText id="cep" value="#{orgaoBean.orgao.endereco.CEP}" placeholder="__.___-___" required="true" requiredMessage="Cep obrigatório" validatorMessage="O CEP informado não obedece ao padrão 99.999-999">
+						<p:inputMask id="cep" mask="99.999-999" value="#{orgaoBean.orgao.endereco.CEP}" placeholder="__.___-___" required="true" requiredMessage="Cep obrigatório" validatorMessage="O CEP informado não obedece ao padrão 99.999-999">
 							<h:outputLabel for="cep">CEP:</h:outputLabel>
 							<f:validateRegex pattern="(^[0-9]{2}.?[0-9]{3}-{1}[0-9]{3})" />
-						</p:inputText>
+						</p:inputMask>
 					</div>
 					
 					<div class="span3">
