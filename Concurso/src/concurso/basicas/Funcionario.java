@@ -80,6 +80,7 @@ public class Funcionario {
 	@Column(name="dataAdmissao")
 	private Date dataAdmissao;
 	
+	@Temporal(TemporalType.DATE)
 	@Column(name="dataDemissao")
 	private Date dataDemissao;
 	
