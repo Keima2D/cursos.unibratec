@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -21,9 +22,11 @@ public class Questao {
 	private Integer id;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="disciplina_id")
 	private Disciplina disciplina;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="professor_id")
 	private Funcionario professor;
 	
 	

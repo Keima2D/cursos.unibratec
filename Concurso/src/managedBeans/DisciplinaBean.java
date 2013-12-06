@@ -36,7 +36,7 @@ public class DisciplinaBean {
 	
 	public String editar(Disciplina obj){
 		this.disciplina = obj;
-		return "form.xhtml?faces-redirect=true";
+		return "form.xhtml";
 	}
 	
 	public String excluir(Disciplina obj){

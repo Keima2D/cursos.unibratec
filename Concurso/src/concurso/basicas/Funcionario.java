@@ -70,6 +70,7 @@ public class Funcionario {
 	private String observacao;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="cargo_id")
 	private Cargo cargo;
 	
 	@ManyToOne(fetch=FetchType.EAGER)

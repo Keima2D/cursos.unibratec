@@ -17,8 +17,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.Cascade;
-
 
 @Entity @Table(name="provas")
 public class Prova {
@@ -30,10 +28,10 @@ public class Prova {
 	@Column(name="nome",length=45)
 	private String nome;
 	
-	@Column(name="descricao")
+	@Column(name="descricao", columnDefinition="TEXT")
 	private String descricao;
 	
-	@Column(name="observacao")
+	@Column(name="observacao", columnDefinition="TEXT")
 	private String observacao;
 	
 	@Column(name="nivel")

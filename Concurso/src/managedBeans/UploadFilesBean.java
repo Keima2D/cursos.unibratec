@@ -4,26 +4,20 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
-import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
-
 import org.primefaces.event.FileUploadEvent;
 
-@ManagedBean(name = "uploadFilesBean")
+@ManagedBean(name="uploadFilesBean")
 @SessionScoped
 public class UploadFilesBean {
    
     //Primitives
     private static final int BUFFER_SIZE = 6124;    
-    private String folderToUpload;
-    
+        
     /** Creates a new instance of UploadBean */
     public UploadFilesBean() {
     }
