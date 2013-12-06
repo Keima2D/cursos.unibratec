@@ -34,10 +34,10 @@
 					</div>
 
 					<div class="span2">
-						<p:inputText id="dataNascimento" placeholder="__/__/____" value="#{funcionarioBean.funcionario.dataNascimento}" required="true" requiredMessage="Data de nascimento obrigatório" converterMessage="A data informada não obedece ao padrão 99/99/9999">
+						<p:inputMask id="dataNascimento" mask="99/99/9999" value="#{funcionarioBean.funcionario.dataNascimento}" placeholder="__/__/____" required="true" requiredMessage="Data de nascimento obrigatório" converterMessage="A data de nascimento informada não obedece ao padrão 99/99/9999">
 							<h:outputLabel for="dataNascimento">Nasc.:</h:outputLabel>
 							<f:convertDateTime pattern="d/MM/yyyy" />
-						</p:inputText>
+						</p:inputMask>
 					</div>
 
 					<div class="span1">
@@ -51,10 +51,10 @@
 					</div>
 
 					<div class="span2">
-						<p:inputText id="cpf" placeholder="___.___.___-__" 	value="#{funcionarioBean.funcionario.CPF}" required="true" requiredMessage="CPF obrigatório" validatorMessage="O CPF informado não obedece ao padrão definido 999.999.999-99">
+						<p:inputMask id="cpf" mask="999.999.999-99" placeholder="___.___.___-__" value="#{funcionarioBean.funcionario.CPF}" required="true" requiredMessage="CPF obrigatório" validatorMessage="O CPF informado não obedece ao padrão definido 999.999.999-99">
 							<h:outputLabel for="cpf">CPF:</h:outputLabel>
 							<f:validateRegex pattern="(^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-{1}[0-9]{2})" />
-						</p:inputText>
+						</p:inputMask>
 					</div>
 
 					<div class="span2">
@@ -91,10 +91,10 @@
 					</div>
 
 					<div class="span2">
-						<p:inputText id="telefone" value="#{funcionarioBean.funcionario.telefone}" placeholder="( )____-____" required="true" requiredMessage="Telefone obrigatório" validatorMessage="O telefone informado não obedece ao padrão definido (99)9999-9999">
+						<p:inputMask id="telefone" mask="(99)9999-9999" value="#{funcionarioBean.funcionario.telefone}" placeholder="(__)____-____" required="true" requiredMessage="Telefone obrigatório" validatorMessage="O telefone informado não obedece ao padrão definido (99)9999-9999">
 							<h:outputLabel for="telefone">Telefone:</h:outputLabel>
 							<f:validateRegex pattern="(^\([0-9]{2}\)\s?[0-9]{4}\-{1}[0-9]{4}$)" />
-						</p:inputText>
+						</p:inputMask>
 					</div>
 				</div>
 
@@ -117,10 +117,10 @@
 					</div>
 					
 					<div class="span2">
-						<p:inputText id="cep" value="#{funcionarioBean.funcionario.endereco.CEP}" placeholder="__.___-___" required="true" requiredMessage="CEP obrigatório" validatorMessage="O CEP informado não obedece ao padrão 99.999-999">
+						<p:inputMask id="cep" mask="99.999-999" value="#{funcionarioBean.funcionario.endereco.CEP}" placeholder="__.___-___" required="true" requiredMessage="CEP obrigatório" validatorMessage="O CEP informado não obedece ao padrão 99.999-999">
 							<h:outputLabel for="cep">CEP:</h:outputLabel>
 							<f:validateRegex pattern="(^[0-9]{2}.?[0-9]{3}-{1}[0-9]{3})" />
-						</p:inputText>
+						</p:inputMask>
 					</div>
 
 					<div class="span3">
@@ -172,17 +172,17 @@
 			        </div>
 
 					<div class="span2">
-						<p:inputText id="dataAdmissao" value="#{funcionarioBean.funcionario.dataAdmissao}" placeholder="__/__/____"  required="true" requiredMessage="Data de admissão obrigatória" converterMessage="A data informada não obedece ao padrão 99/99/9999">
+						<p:inputMask id="dataAdmissao" mask="99/99/9999" value="#{funcionarioBean.funcionario.dataAdmissao}" placeholder="__/__/____"  required="true" requiredMessage="Data de admissão obrigatória" converterMessage="A data de admissão informada de  não obedece ao padrão 99/99/9999">
 							<h:outputLabel for="dataAdmissao">Data de admissão:</h:outputLabel>
 							<f:convertDateTime pattern="d/MM/yyyy" />
-						</p:inputText>
+						</p:inputMask>
 					</div>
 
 					<div class="span2">
-						<p:inputText id="dataDemissao" value="#{funcionarioBean.funcionario.dataDemissao}" placeholder="__/__/____" converterMessage="A data informada não obedece ao padrão 99/99/9999">
+						<p:inputMask id="dataDemissao" mask="99/99/9999" value="#{funcionarioBean.funcionario.dataDemissao}" placeholder="__/__/____" converterMessage="A data de demissão informada não obedece ao padrão 99/99/9999">
 							<h:outputLabel for="dataDemissao">Data de demissão:</h:outputLabel>
 							<f:convertDateTime pattern="d/MM/yyyy" />
-						</p:inputText>
+						</p:inputMask>
 					</div>
 
 					<div class="span2">
