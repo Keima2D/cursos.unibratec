@@ -1,12 +1,15 @@
 package managedBeans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
+import concurso.basicas.Disciplina;
 import concurso.basicas.Prova;
+import concurso.basicas.QuestaoDisciplina;
 import concurso.fachada.Fachada;
 import concurso.fachada.IFachada;
 import concurso.negocio.NegocioException;
@@ -18,8 +21,20 @@ public class ProvaBean {
 	private Integer orgaoSelecionado = null;
 	
 	public Prova getProva() {
+		if (this.prova.getQuestoesPorDisciplina() == null) {
+			List<QuestaoDisciplina> list = new ArrayList<QuestaoDisciplina>();
+			List<Disciplina> disciplinas = fachada.consultarTodasDisciplinas();
+			
+			for (Disciplina disciplina: disciplinas) {
+				list.add(new QuestaoDisciplina(disciplina));
+			}
+			
+			this.prova.setQuestoesPorDisciplina(list);
+		}
+
 		return this.prova;
 	}
+
 	public List<Prova> getProvas() {
 		return fachada.consultarTodasProvas();
 	}
@@ -35,7 +50,6 @@ public class ProvaBean {
 	public void setOrgaoSelecionado (Integer orgaoSelecionado) {
 		this.orgaoSelecionado = orgaoSelecionado;
 	}
-	
 	
 	public String salvar () {
 		this.prova.setOrgao(Fachada.getInstancia().consultarOrgaoPorId(this.orgaoSelecionado));

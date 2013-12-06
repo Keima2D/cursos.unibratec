@@ -25,17 +25,45 @@
 			<h:form>
 				<h:inputHidden value="#{provaBean.prova.id}"></h:inputHidden>
 				<p:messages></p:messages>
-				
+
 				<div class="row-fluid">
-					<div class="span7">
+					<div class="span5">
 						<p:inputText id="nome" value="#{provaBean.prova.nome}" required="true" requiredMessage="Nome obrigatório" validatorMessage="O nome informado não obedece o minimo de 5 caracteres">
 							<h:outputLabel for="nome">Nome:</h:outputLabel> 
 							<f:validateLength minimum="5" maximum="50" />
 						</p:inputText>
-						</div>
 					</div>
+
+					<div class="span2">
+						<h:selectOneMenu id="nivel" placeholder="Nivel"
+							value="#{provaBean.prova.nivel}" required="true"
+							requiredMessage="Nivel obrigatório">
+							<f:selectItem itemLabel="Medio" itemValue="Medio" />
+							<f:selectItem itemLabel="Tecnico" itemValue="Tecnico" />
+							<f:selectItem itemLabel="Superior" itemValue="Superior" />
+							<h:outputLabel for="nivel">Nivel:</h:outputLabel>
+						</h:selectOneMenu>
+					</div>
+
+					<div class="span2">
+						<p:inputText id="data_aplicacao" placeholder="__/__/____" value="#{provaBean.prova.dataAplicacao}" required="true" requiredMessage="Data de aplicacao obrigatória" converterMessage="A data informada não obedece ao padrão 99/99/9999">
+							<h:outputLabel for="data_aplicacao">Data de Aplicação.:</h:outputLabel>
+							<f:convertDateTime pattern="d/MM/yyyy" />
+						</p:inputText>
+					</div>
+				</div>
+				
+				<div class="row-fluid">
+					<div class="span3">
+						<h:selectOneMenu id="orgao" value="#{provaBean.orgaoSelecionado}" required="true" requiredMessage="Orgão obrigatório">  
+				        	<f:selectItem itemLabel="----" itemValue="" />  
+				            <f:selectItems value="#{orgaoBean.orgaos}" var="orgao" itemLabel="#{orgao.nome}" itemValue="#{orgao.id}"/>
+				            <h:outputLabel for="orgao">Orgão:</h:outputLabel>
+				        </h:selectOneMenu>  
+					</div>
+				</div>
 						
-					<div class="row-fluid">
+				<div class="row-fluid">
 					<div class="span7">
 						<h:inputTextarea id="descricao" value="#{provaBean.prova.descricao}" rows="3" required="true" requiredMessage="Descrição obrigatoria" >
 							<h:outputLabel for="descricao">Descrição:</h:outputLabel>
@@ -44,7 +72,7 @@
 					</div>
 				</div>
 				
-					<div class="row-fluid">
+				<div class="row-fluid">
 					<div class="span7">
 						<h:inputTextarea id="observacao" value="#{provaBean.prova.observacao}" rows= "3">
 							<h:outputLabel for="observacao">Observação:</h:outputLabel>
@@ -52,38 +80,24 @@
 					</div>
 				</div>
 					
-					<div class="row-fluid">			
-					<div class="span7">
-						<h:selectOneMenu id="orgao" value="#{provaBean.orgaoSelecionado}" required="true" requiredMessage="Orgão obrigatório">  
-				        	<f:selectItem itemLabel="----" itemValue="" />  
-				            <f:selectItems value="#{orgaoBean.orgaos}" var="orgao" itemLabel="#{orgao.nome}" itemValue="#{orgao.id}"/>
-				            <h:outputLabel for="orgao">Orgão:</h:outputLabel>
-				        </h:selectOneMenu>  
-					</div>
+
+				<div class ="row-fluid">
+
 				</div>
-					
-					<div class="row-fluid">
-					<div class="span7">
-					<h:outputLabel for="nivel">Nivel:</h:outputLabel>
-						<h:selectOneMenu id="nivel" placeholder="Nivel"
-							value="#{provaBean.prova.nivel}" required="true"
-							requiredMessage="Nivel obrigatório">
-							<f:selectItem itemLabel="Medio" itemValue="Medio" />
-							<f:selectItem itemLabel="Tecnico" itemValue="Tecnico" />
-							<f:selectItem itemLabel="Superior" itemValue="Superior" />
-						</h:selectOneMenu>
-					</div>
+				
+				<div class="row-fluid">
+			        <p:dataTable class="span6" var="qstPorDisc" value="#{provaBean.prova.questoesPorDisciplina}">
+		                <p:column  width="50" headerText="Disciplina" class="text-centered">
+		                    <h:outputText value="#{qstPorDisc.disciplina.descricao}" />
+		                </p:column>
+		
+		                <p:column headerText="Quantidade de questões">
+		                    <h:inputText value="#{qstPorDisc.quantidade}">
+		                    </h:inputText>
+		                </p:column>
+			        </p:dataTable>
 				</div>
-					
-					<div class ="row-fluid">
-					<div class="span2">
-						<p:inputText id="data_aplicacao" placeholder="__/__/____" value="#{provaBean.prova.data_aplicacao}" required="true" requiredMessage="Data de aplicacao obrigatória" converterMessage="A data informada não obedece ao padrão 99/99/9999">
-							<h:outputLabel for="data_aplicacao">Data de Aplicação.:</h:outputLabel>
-							<f:convertDateTime pattern="d/MM/yyyy" />
-						</p:inputText>
-					</div>
-					
-				</div>
+				
 				<hr/>
 				<p:commandButton class="btn btn-success" action="#{provaBean.salvar}" value="Salvar" ajax="false"></p:commandButton>
 				<a class="btn btn-danger" href="#{request.contextPath}/provas/index.xhtml"><i class="icon icon-white icon-remove"></i>Cancelar</a>
