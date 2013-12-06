@@ -54,10 +54,10 @@
 					</div>
 
 					<div class="span2">
-						<p:inputText id="data_aplicacao" placeholder="__/__/____" value="#{provaBean.prova.dataAplicacao}" required="true" requiredMessage="Data de aplicacao obrigatória" converterMessage="A data informada não obedece ao padrão 99/99/9999">
+						<p:inputMask id="data_aplicacao" mask="99/99/9999" value="#{provaBean.prova.dataAplicacao}" placeholder="__/__/____" required="true" requiredMessage="Data de aplicação obrigatoria" converterMessage="Data invalida">
 							<h:outputLabel for="data_aplicacao">Data de Aplicação.:</h:outputLabel>
 							<f:convertDateTime pattern="d/MM/yyyy" />
-						</p:inputText>
+						</p:inputMask>
 					</div>
 				</div>
 						
