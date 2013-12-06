@@ -79,21 +79,18 @@
 						</h:inputTextarea>
 					</div>
 				</div>
-					
-
-				<div class ="row-fluid">
-
-				</div>
 				
 				<div class="row-fluid">
-			        <p:dataTable class="span6" var="qstPorDisc" value="#{provaBean.prova.questoesPorDisciplina}">
+			        <p:dataTable class="span3" var="qstPorDisc" value="#{provaBean.prova.questoesPorDisciplina}">
 		                <p:column  width="50" headerText="Disciplina" class="text-centered">
 		                    <h:outputText value="#{qstPorDisc.disciplina.descricao}" />
 		                </p:column>
 		
-		                <p:column headerText="Quantidade de questões">
-		                    <h:inputText value="#{qstPorDisc.quantidade}">
-		                    </h:inputText>
+		                <p:column headerText="Qtd. de questões">
+		                	<div class="row-fluid">           	
+			                    <h:inputText class="span10" value="#{qstPorDisc.quantidade}">
+			                    </h:inputText>
+		                    </div>
 		                </p:column>
 			        </p:dataTable>
 				</div>
