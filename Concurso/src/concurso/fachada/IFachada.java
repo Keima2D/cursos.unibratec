@@ -97,9 +97,9 @@ public interface IFachada {
 	 */	
 	List <Prova> consultarTodasProvas();
 	
-	void inserir(Prova prova);
+	void inserir(Prova prova) throws NegocioException;
 	
-	void alterar(Prova prova);
+	void alterar(Prova prova) throws NegocioException;
 	
 	void remover(Prova obj) throws NegocioException;
 	

@@ -37,7 +37,7 @@ public class Prova {
 	private String observacao;
 	
 	@Column(name="nivel")
-	private String nivel;
+	private NivelQuestao nivel;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_aplicacao")
@@ -49,6 +49,9 @@ public class Prova {
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<QuestaoDisciplina> questoesPorDisciplina;
+
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
+	private List<Questao> questoes;
 	
 	public Orgao getOrgao() {
 		return orgao;
@@ -90,11 +93,11 @@ public class Prova {
 		this.observacao = observacao;
 	}
 
-	public String getNivel() {
+	public NivelQuestao getNivel() {
 		return nivel;
 	}
 
-	public void setNivel(String nivel) {
+	public void setNivel(NivelQuestao nivel) {
 		this.nivel = nivel;
 	}
 
@@ -113,6 +116,14 @@ public class Prova {
 	public void setQuestoesPorDisciplina(
 			List<QuestaoDisciplina> questoesPorDisciplina) {
 		this.questoesPorDisciplina = questoesPorDisciplina;
+	}
+
+	public List<Questao> getQuestoes() {
+		return questoes;
+	}
+
+	public void setQuestoes(List<Questao> questoes) {
+		this.questoes = questoes;
 	}
 
 }

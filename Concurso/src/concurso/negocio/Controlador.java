@@ -1,5 +1,6 @@
 package concurso.negocio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.security.auth.login.LoginException;
@@ -8,9 +9,11 @@ import concurso.basicas.Cargo;
 import concurso.basicas.Dependente;
 import concurso.basicas.Disciplina;
 import concurso.basicas.Funcionario;
+import concurso.basicas.NivelQuestao;
 import concurso.basicas.Orgao;
 import concurso.basicas.Prova;
 import concurso.basicas.Questao;
+import concurso.basicas.QuestaoDisciplina;
 import concurso.basicas.Setor;
 import concurso.dados.CargoDAO;
 import concurso.dados.DependenteDAO;
@@ -203,13 +206,38 @@ public class Controlador {
 		return this.provaDAO.consultarTodos();
 	}
 	
-	public void inserir(Prova obj) {
+	public void inserir(Prova obj) throws NegocioException {
+		obj.setQuestoes(this.gerarProva(obj));
 		this.provaDAO.inserir(obj);
 	}
 
-	public void alterar(Prova obj) {
+	public void alterar(Prova obj) throws NegocioException {
+		obj.setQuestoes(this.gerarProva(obj));
 		this.provaDAO.alterar(obj);
 	}
+
+	private List<Questao> gerarProva (Prova obj) throws NegocioException {
+		NivelQuestao nivel = obj.getNivel();
+		List<QuestaoDisciplina> list = obj.getQuestoesPorDisciplina();
+		List<Questao> listFinalQuestoes = new ArrayList<Questao>();
+		
+		for (QuestaoDisciplina item: list) {
+			if (item.getQuantidade() != null) {
+				List<Questao> questoesDaDisciplina = this.getQuestoesPorDisciplinaENivel(item.getDisciplina(), nivel, item.getQuantidade());
+				
+				if (questoesDaDisciplina != null && item.getQuantidade().equals(questoesDaDisciplina.size())) {
+					for (Questao qst: questoesDaDisciplina) {
+						listFinalQuestoes.add(qst);
+					}
+				} else {
+					throw new NegocioException("N‹o existem quest›es de " +item.getDisciplina().getDescricao() + " sulficientes para gerar a prova.");
+				}
+			}
+		}
+		
+		return listFinalQuestoes;
+	}
+	
 	
 	public void remover(Prova obj) {
 		this.provaDAO.remover(obj);
@@ -240,5 +268,9 @@ public class Controlador {
 
 	public Questao consultarQuestaoPorId(Integer id) {
 		return questaoDAO.consultarPorId(id);
+	}
+
+	public List<Questao> getQuestoesPorDisciplinaENivel(Disciplina disciplina, NivelQuestao nvl, Integer limit) {
+		return this.questaoDAO.getQuestoesPorDisciplinaENivel(disciplina, nvl, limit);
 	}
 }

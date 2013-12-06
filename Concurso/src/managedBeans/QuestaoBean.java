@@ -85,6 +85,8 @@ public class QuestaoBean {
 		} else {
 			fachada.alterar(questao);
 		}
+		
+		this.questao = new Questao();
 		return "index.xhtml?faces-redirect=true";
 	}
 

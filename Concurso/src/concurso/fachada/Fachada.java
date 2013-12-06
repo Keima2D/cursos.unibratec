@@ -8,6 +8,7 @@ import concurso.basicas.Cargo;
 import concurso.basicas.Dependente;
 import concurso.basicas.Disciplina;
 import concurso.basicas.Funcionario;
+import concurso.basicas.NivelQuestao;
 import concurso.basicas.Orgao;
 import concurso.basicas.Prova;
 import concurso.basicas.Questao;
@@ -171,12 +172,12 @@ public class Fachada implements IFachada {
 	/**
 	 * Prova
 	 */
-	public void inserir(Prova obj) {
+	public void inserir(Prova obj) throws NegocioException {
 		this.controlador.inserir(obj);
 		
 	}
 	
-	public void alterar(Prova obj) {
+	public void alterar(Prova obj) throws NegocioException {
 		this.controlador.alterar(obj);
 	}
 
@@ -212,9 +213,12 @@ public class Fachada implements IFachada {
 	public List<Questao> consultarTodasQuestoes() {
 		return this.controlador.consultarTodasQuestoes();
 	}
+
+	public List<Questao> getQuestoesPorDisciplinaENivel(Disciplina disciplina, NivelQuestao nvl, Integer limit) {
+		return this.controlador.getQuestoesPorDisciplinaENivel(disciplina, nvl, limit);
+	}
 		
 	public Questao consultarQuestaoPorId(Integer id) {
 		return this.controlador.consultarQuestaoPorId(id);
 	}
-
 }

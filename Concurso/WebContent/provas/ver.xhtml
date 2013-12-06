@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<h:body>
+	<ui:composition template="../layouts/default.xhtml">
+		<ui:define name="content">
+			<ul class="breadcrumb">
+				<li>
+					<a href="#{request.contextPath}/home.xhtml"><i 
+					class="icon icon-home"></i></a> <span class="divider">/</span>
+				</li>
+				<li>
+					<a href="#{request.contextPath}/provas/index.xhtml">Provas</a>
+					<span class="divider">/</span>
+				</li>
+				<li>
+					Visualizar
+					<span class="divider">/</span>
+				</li>
+				<li class="active">#{provaBean.prova.nome}</li>
+			</ul>
+			<hr />
+			
+			<div class="row-fluid">
+				<div class="span12">
+					<h1 class="center">#{provaBean.prova.nome}</h1>
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="span12">
+					#{provaBean.prova.orgao.nome}
+				</div>
+			</div>
+			
+			<hr />
+			
+			<div class="row-fluid">
+				<div class="span12">
+					<h3 class="center">Introdução</h3>
+					<p>#{provaBean.prova.descricao}</p>
+				</div>
+			</div>
+
+			<hr />
+
+			<div class="row-fluid">
+				<div class="span12">
+					<h3 class="center">Observações</h3>
+					<p>#{provaBean.prova.observacao}</p>
+				</div>
+			</div>
+			
+			<hr />
+			
+			<h1>Questionário</h1>
+			<hr />
+			
+			<ol>
+				<ui:repeat var="q" value="#{provaBean.prova.questoes}" varStatus="status">
+					<li class="questao-item">
+						<p>#{q.introducao}</p>
+						<div class="uploaded_image">
+							<h:graphicImage rendered="#{q.imagemAnexo != null}" value="#{request.contextPath}/../resources/upload/#{q.imagemAnexo}" />
+						</div>
+						<p>#{q.pergunta}</p>
+						<ul>
+							<li><span class="badge">A</span>#{q.alternativaA}</li>
+							<li><span class="badge">B</span>#{q.alternativaB}</li>
+							<li><span class="badge">C</span>#{q.alternativaC}</li>
+							<li><span class="badge">D</span>#{q.alternativaD}</li>
+							<li><span class="badge">E</span>#{q.alternativaE}</li>
+						</ul>
+					</li>
+				</ui:repeat>
+			</ol>
+
+			
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -7,8 +7,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import com.sun.xml.internal.ws.developer.SchemaValidation;
-
 import utils.MD5;
 import concurso.basicas.Endereco;
 import concurso.basicas.Funcionario;
@@ -89,6 +87,7 @@ public class FuncionarioBean {
 			fachada.alterar(funcionario);
 		}
 		
+		this.funcionario = new Funcionario();
 		return "index.xhtml?faces-redirect=true";
 	}
 	

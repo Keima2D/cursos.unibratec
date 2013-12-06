@@ -43,12 +43,10 @@
 					</div>
 
 					<div class="span2">
-						<h:selectOneMenu id="nivel" placeholder="Nivel"
-							value="#{provaBean.prova.nivel}" required="true"
-							requiredMessage="Nivel obrigatório">
-							<f:selectItem itemLabel="Medio" itemValue="Medio" />
-							<f:selectItem itemLabel="Tecnico" itemValue="Tecnico" />
-							<f:selectItem itemLabel="Superior" itemValue="Superior" />
+						<h:selectOneMenu id="nivel" placeholder="Nivel" value="#{provaBean.prova.nivel}" required="true" requiredMessage="Nivel obrigatório">
+							<f:selectItem itemLabel="Medio" itemValue="MEDIO" />
+							<f:selectItem itemLabel="Tecnico" itemValue="TECNICO" />
+							<f:selectItem itemLabel="Superior" itemValue="SUPERIOR" />
 							<h:outputLabel for="nivel">Nivel:</h:outputLabel>
 						</h:selectOneMenu>
 					</div>
