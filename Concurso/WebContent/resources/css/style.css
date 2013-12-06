@@ -29,6 +29,7 @@ form ul.alert li {margin:0; padding:0;list-style: none;}
 
 .badge {border-radius: 9px!important; margin-right: 10px}
 
-.questao-item {margin-bottom: 50px}
-.questao-item ul {margin:0;margin-top:25px}
+.questao-item {margin-bottom: 50px;font-weight: bold;}
+.questao-item p {font-weight: normal;}
+.questao-item ul {margin:0;margin-top:25px;}
 .questao-item ul li{margin:0; list-style:none;}

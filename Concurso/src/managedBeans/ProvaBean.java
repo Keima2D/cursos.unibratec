@@ -75,7 +75,7 @@ public class ProvaBean {
 	}
 
 	public String ver(Prova obj){
-		this.prova = obj;
+		this.prova = fachada.consultarProvaPorId(obj.getId());
 		return "ver.xhtml";
 	}
 	
