@@ -27,11 +27,19 @@
 				<p:messages></p:messages>
 
 				<div class="row-fluid">
-					<div class="span5">
+					<div class="span4">
 						<p:inputText id="nome" value="#{provaBean.prova.nome}" required="true" requiredMessage="Nome obrigatório" validatorMessage="O nome informado não obedece o minimo de 5 caracteres">
 							<h:outputLabel for="nome">Nome:</h:outputLabel> 
 							<f:validateLength minimum="5" maximum="50" />
 						</p:inputText>
+					</div>
+
+					<div class="span3">
+						<h:selectOneMenu id="orgao" value="#{provaBean.orgaoSelecionado}" required="true" requiredMessage="Orgão obrigatório">  
+				        	<f:selectItem itemLabel="----" itemValue="" />  
+				            <f:selectItems value="#{orgaoBean.orgaos}" var="orgao" itemLabel="#{orgao.nome}" itemValue="#{orgao.id}"/>
+				            <h:outputLabel for="orgao">Orgão:</h:outputLabel>
+				        </h:selectOneMenu>  
 					</div>
 
 					<div class="span2">
@@ -52,20 +60,10 @@
 						</p:inputText>
 					</div>
 				</div>
-				
-				<div class="row-fluid">
-					<div class="span3">
-						<h:selectOneMenu id="orgao" value="#{provaBean.orgaoSelecionado}" required="true" requiredMessage="Orgão obrigatório">  
-				        	<f:selectItem itemLabel="----" itemValue="" />  
-				            <f:selectItems value="#{orgaoBean.orgaos}" var="orgao" itemLabel="#{orgao.nome}" itemValue="#{orgao.id}"/>
-				            <h:outputLabel for="orgao">Orgão:</h:outputLabel>
-				        </h:selectOneMenu>  
-					</div>
-				</div>
 						
 				<div class="row-fluid">
-					<div class="span7">
-						<h:inputTextarea id="descricao" value="#{provaBean.prova.descricao}" rows="3" required="true" requiredMessage="Descrição obrigatoria" >
+					<div class="span12">
+						<h:inputTextarea id="descricao" value="#{provaBean.prova.descricao}" rows="6" required="true" requiredMessage="Descrição obrigatoria" >
 							<h:outputLabel for="descricao">Descrição:</h:outputLabel>
 							<f:validateLength minimum="5" maximum="255" />
 						</h:inputTextarea>
@@ -73,8 +71,8 @@
 				</div>
 				
 				<div class="row-fluid">
-					<div class="span7">
-						<h:inputTextarea id="observacao" value="#{provaBean.prova.observacao}" rows= "3">
+					<div class="span12">
+						<h:inputTextarea id="observacao" value="#{provaBean.prova.observacao}" rows= "6">
 							<h:outputLabel for="observacao">Observação:</h:outputLabel>
 						</h:inputTextarea>
 					</div>
